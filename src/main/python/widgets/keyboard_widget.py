@@ -350,8 +350,8 @@ class KeyboardWidget(QWidget):
         max_w = max_h = 0
         for key in self.widgets:
             p = key.polygon.boundingRect().bottomRight()
-            max_w = max(max_w, p.x() * self.scale)
-            max_h = max(max_h, p.y() * self.scale)
+            max_w = max(max_w, p.x() * (self.scale * 1.5))
+            max_h = max(max_h, p.y() * (self.scale * 1.5))
 
         self.width = round(max_w + 2 * self.padding)
         self.height = round(max_h + 2 * self.padding)
@@ -410,12 +410,13 @@ class KeyboardWidget(QWidget):
         foreground_on_brush.setStyle(Qt.SolidPattern)
 
         mask_font = qp.font()
-        mask_font.setPointSize(round(mask_font.pointSize() * 0.8))
+        #doesnt seem to change font size
+        mask_font.setPointSize(round(mask_font.pointSize() * 1.8))
 
         for idx, key in enumerate(self.widgets):
             qp.save()
 
-            qp.scale(self.scale, self.scale)
+            qp.scale(self.scale * 1.3, self.scale * 1.3)
             qp.translate(key.shift_x, key.shift_y)
             qp.translate(key.rotation_x, key.rotation_y)
             qp.rotate(key.rotation_angle)
@@ -445,7 +446,7 @@ class KeyboardWidget(QWidget):
 
             # draw key text
             if key.masked:
-                # draw the outer legend
+                # draw the outer legend doesnt seem to change font size
                 qp.setFont(mask_font)
                 qp.setPen(key.color if key.color else regular_pen)
                 qp.drawText(key.nonmask_rect, Qt.AlignCenter, key.text)
@@ -457,10 +458,16 @@ class KeyboardWidget(QWidget):
 
                 # draw the inner legend
                 qp.setPen(key.mask_color if key.mask_color else regular_pen)
+                smaller_font = qp.font()
+                smaller_font.setPointSize(smaller_font.pointSize() - 2)
+                qp.setFont(smaller_font)
                 qp.drawText(key.mask_rect, Qt.AlignCenter, key.mask_text)
             else:
                 # draw the legend
                 qp.setPen(key.color if key.color else regular_pen)
+                smaller_font = qp.font()
+                smaller_font.setPointSize(smaller_font.pointSize() - 2)
+                qp.setFont(smaller_font)
                 qp.drawText(key.text_rect, Qt.AlignCenter, key.text)
 
             # draw the extra shape (encoder arrow)
@@ -479,9 +486,9 @@ class KeyboardWidget(QWidget):
         """ Returns key, hit_masked_part """
 
         for key in self.widgets:
-            if key.masked and key.mask_polygon.containsPoint(pos/self.scale, Qt.OddEvenFill):
+            if key.masked and key.mask_polygon.containsPoint(pos/(self.scale * 1.3), Qt.OddEvenFill):
                 return key, True
-            if key.polygon.containsPoint(pos/self.scale, Qt.OddEvenFill):
+            if key.polygon.containsPoint(pos/(self.scale * 1.3), Qt.OddEvenFill):
                 return key, False
 
         return None, False

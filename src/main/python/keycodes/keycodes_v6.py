@@ -571,7 +571,25 @@ class keycodes_v6:
         "MI_PROG_DWN": (0x8000 + 128 * 6) + 128 * 128 + 4,
 
         "MI_VELOCITY_0": (0x8000 + 128 * 6) + 128 * 128 + 5,
-        "ENCODER_SENSITIVITY_1": (0x8000 + 128 * 7) + 128 * 128 + 5,
+        
+        
+        "CC_STEPSIZE_1": (0x8000 + 128 * 7) + 128 * 128 + 5,
+        "CC_STEPSIZE_2": (0x8000 + 128 * 7) + 128 * 128 + 6,
+        "CC_STEPSIZE_3": (0x8000 + 128 * 7) + 128 * 128 + 7,
+        "CC_STEPSIZE_4": (0x8000 + 128 * 7) + 128 * 128 + 8,
+        "CC_STEPSIZE_5": (0x8000 + 128 * 7) + 128 * 128 + 9,
+        "CC_STEPSIZE_6": (0x8000 + 128 * 7) + 128 * 128 + 10,
+        "CC_STEPSIZE_7": (0x8000 + 128 * 7) + 128 * 128 + 11,
+        "CC_STEPSIZE_8": (0x8000 + 128 * 7) + 128 * 128 + 12,
+        "CC_STEPSIZE_9": (0x8000 + 128 * 7) + 128 * 128 + 13,
+        "CC_STEPSIZE_10": (0x8000 + 128 * 7) + 128 * 128 + 14,
+        "CC_STEPSIZE_11": (0x8000 + 128 * 7) + 128 * 128 + 15,
+        "CC_STEPSIZE_12": (0x8000 + 128 * 7) + 128 * 128 + 16,
+        "CC_STEPSIZE_13": (0x8000 + 128 * 7) + 128 * 128 + 17,
+        "CC_STEPSIZE_14": (0x8000 + 128 * 7) + 128 * 128 + 18,
+        "CC_STEPSIZE_15": (0x8000 + 128 * 7) + 128 * 128 + 19,
+        "CC_STEPSIZE_16": (0x8000 + 128 * 7) + 128 * 128 + 20,
+        
         
                 # midi chords "MI_CHORD_1": (0x8000 + 128 * 7) + 128 * 128 + 5 + 17,
         "MI_CHORD_0": 0xC396,
@@ -713,17 +731,74 @@ class keycodes_v6:
         "MI_INVERSION_6" : 0xC426,
         "MI_INVERSION_7" : 0xC427,
         "MI_INVERSION_8" : 0xC428,
+        
+        "MI_SMARTCHORD_PRESS" : 0xC429,
+        "MI_SMARTCHORD_UP" : 0xC42A,
+        "MI_SMARTCHORD_DOWN" : 0xC42B,
+        
+        "MI_VELOCITY_STEPSIZE_1": 0xC42C,
+        "MI_VELOCITY_STEPSIZE_2": 0xC42D,
+        "MI_VELOCITY_STEPSIZE_3": 0xC42E,
+        "MI_VELOCITY_STEPSIZE_4": 0xC42F,
+        "MI_VELOCITY_STEPSIZE_5": 0xC430,
+        "MI_VELOCITY_STEPSIZE_6": 0xC431,
+        "MI_VELOCITY_STEPSIZE_7": 0xC432,
+        "MI_VELOCITY_STEPSIZE_8": 0xC433,
+        "MI_VELOCITY_STEPSIZE_9": 0xC434,
+        "MI_VELOCITY_STEPSIZE_10": 0xC435,
+        
+        "MI_VELOCITY_UP": 0xC436,
+        "MI_VELOCITY_DOWN": 0xC437,
+        
+        "MI_CHANNEL_OS_1": 0xC438,
+        "MI_CHANNEL_OS_2": 0xC439,
+        "MI_CHANNEL_OS_3": 0xC43A,
+        "MI_CHANNEL_OS_4": 0xC43B,
+        "MI_CHANNEL_OS_5": 0xC43C,
+        "MI_CHANNEL_OS_6": 0xC43D,
+        "MI_CHANNEL_OS_7": 0xC43E,
+        "MI_CHANNEL_OS_8": 0xC43F,
+        "MI_CHANNEL_OS_9": 0xC440,
+        "MI_CHANNEL_OS_10": 0xC441,
+        "MI_CHANNEL_OS_11": 0xC442,
+        "MI_CHANNEL_OS_12": 0xC443,
+        "MI_CHANNEL_OS_13": 0xC444,
+        "MI_CHANNEL_OS_14": 0xC445,
+        "MI_CHANNEL_OS_15": 0xC446,
+        "MI_CHANNEL_OS_16": 0xC447,
 
-        "QK_KB":(0x8000 + 128 * 7) + 128 * 128 + 5 + 25 + 130 + 8,  # custom keycodes safe range
+        "MI_CHANNEL_HOLD_1": 0xC448,
+        "MI_CHANNEL_HOLD_2": 0xC449,
+        "MI_CHANNEL_HOLD_3": 0xC44A,
+        "MI_CHANNEL_HOLD_4": 0xC44B,
+        "MI_CHANNEL_HOLD_5": 0xC44C,
+        "MI_CHANNEL_HOLD_6": 0xC44D,
+        "MI_CHANNEL_HOLD_7": 0xC44E,
+        "MI_CHANNEL_HOLD_8": 0xC44F,
+        "MI_CHANNEL_HOLD_9": 0xC450,
+        "MI_CHANNEL_HOLD_10": 0xC451,
+        "MI_CHANNEL_HOLD_11": 0xC452,
+        "MI_CHANNEL_HOLD_12": 0xC453,
+        "MI_CHANNEL_HOLD_13": 0xC454,
+        "MI_CHANNEL_HOLD_14": 0xC455,
+        "MI_CHANNEL_HOLD_15": 0xC456,
+        "MI_CHANNEL_HOLD_16": 0xC457,    
+        
+        "OLED_1": 0xC458,
+        "OLED_2": 0xC459,
+        "OLED_3": 0xC45A,
+        "OLED_4": 0xC45B,
+        "OLED_5": 0xC45C,
+        "OLED_6": 0xC45D,        
+
+
+        "QK_KB":0xC460,  # custom keycodes safe range
         
        
 
     }
 
     masked = set()
-
-for x in range(16):
-    keycodes_v6.kc["ENCODER_SENSITIVITY_{}".format(x+1)] = keycodes_v6.kc["ENCODER_SENSITIVITY_1"] + x
 
 
 for x in range(128):
@@ -758,7 +833,7 @@ for x in range(16):
     keycodes_v6.kc["LT{}(kc)".format(x)] = keycodes_v6.kc["QK_LAYER_TAP"] | (((x) & 0xF) << 8)
 
 for x in range(32):
-    keycodes_v6.kc["USER{:02}".format(x)] = keycodes_v6.kc["QK_KB"] + x
+   keycodes_v6.kc["USER{:02}".format(x)] = keycodes_v6.kc["QK_KB"] + x
 
 for name, val in keycodes_v6.kc.items():
     if name.endswith("(kc)"):

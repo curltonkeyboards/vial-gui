@@ -156,6 +156,13 @@ class Keycode:
         if qmk_constant not in kc:
             raise RuntimeError("unable to resolve qmk_id={}".format(qmk_constant))
         return kc[qmk_constant]
+        
+    @classmethod
+    def description(cls, qmk_id):
+        keycode = cls.find_outer_keycode(qmk_id)
+        if keycode is None or keycode.tooltip is None:
+            return ""
+        return keycode.tooltip
 
 
 K = Keycode
@@ -499,6 +506,125 @@ KEYCODES_ISO_KR = [
 KEYCODES_ISO.extend(KEYCODES_ISO_KR)
 
 KEYCODES_LAYERS = []
+
+KEYCODES_OLED = [
+    K("OLED_1", "Screen\nKeyboard\nShift", "Momentarily turn on layer when pressed"),
+  #  K("OLED_1", "Hold\nLayer\n1", "Momentarily turn on layer when pressed"),
+  #  K("OLED_1", "Hold\nLayer\n2", "Momentarily turn on layer when pressed"),
+  #  K("OLED_1", "Hold\nLayer\n3", "Momentarily turn on layer when pressed"),
+  #  K("OLED_1", "Hold\nLayer\n4", "Momentarily turn on layer when pressed"),
+]
+
+KEYCODES_LAYERS_MO = [
+    K("MO(0)", "Hold\nLayer\n0", "Momentarily turn on layer when pressed"),
+    K("MO(1)", "Hold\nLayer\n1", "Momentarily turn on layer when pressed"),
+    K("MO(2)", "Hold\nLayer\n2", "Momentarily turn on layer when pressed"),
+    K("MO(3)", "Hold\nLayer\n3", "Momentarily turn on layer when pressed"),
+    K("MO(4)", "Hold\nLayer\n4", "Momentarily turn on layer when pressed"),
+    K("MO(5)", "Hold\nLayer\n5", "Momentarily turn on layer when pressed"),
+    K("MO(6)", "Hold\nLayer\n6", "Momentarily turn on layer when pressed"),
+    K("MO(7)", "Hold\nLayer\n7", "Momentarily turn on layer when pressed"),
+    K("MO(8)", "Hold\nLayer\n8", "Momentarily turn on layer when pressed"),
+    K("MO(9)", "Hold\nLayer\n9", "Momentarily turn on layer when pressed"),
+    K("MO(10)", "Hold\nLayer\n10", "Momentarily turn on layer when pressed"),
+    K("MO(11)", "Hold\nLayer\n11", "Momentarily turn on layer when pressed"),
+]
+
+
+KEYCODES_LAYERS_DF = [
+    K("DF(0)", "Default\nLayer\n0", "Set to default (active)\nLayer)"),
+    K("DF(1)", "Default\nLayer\n1", "Set to default (active)\nLayer)"),
+    K("DF(2)", "Default\nLayer\n2", "Set to default (active)\nLayer)"),
+    K("DF(3)", "Default\nLayer\n3", "Set to default (active)\nLayer)"),
+    K("DF(4)", "Default\nLayer\n4", "Set to default (active)\nLayer)"),
+    K("DF(5)", "Default\nLayer\n5", "Set to default (active)\nLayer)"),
+    K("DF(6)", "Default\nLayer\n6", "Set to default (active)\nLayer)"),
+    K("DF(7)", "Default\nLayer\n7", "Set to default (active)\nLayer)"),
+    K("DF(8)", "Default\nLayer\n8", "Set to default (active)\nLayer)"),
+    K("DF(9)", "Default\nLayer\n9", "Set to default (active)\nLayer)"),
+    K("DF(10)", "Default\nLayer\n10", "Set to default (active)\nLayer)"),
+    K("DF(11)", "Default\nLayer\n11", "Set to default (active)\nLayer)"),
+]
+
+KEYCODES_LAYERS_TG = [
+    K("TG(0)", "Toggle\nLayer\n0", "Toggle\nLayer on or off)"),
+    K("TG(1)", "Toggle\nLayer\n1", "Toggle\nLayer on or off)"),
+    K("TG(2)", "Toggle\nLayer\n2", "Toggle\nLayer on or off)"),
+    K("TG(3)", "Toggle\nLayer\n3", "Toggle\nLayer on or off)"),
+    K("TG(4)", "Toggle\nLayer\n4", "Toggle\nLayer on or off)"),
+    K("TG(5)", "Toggle\nLayer\n5", "Toggle\nLayer on or off)"),
+    K("TG(6)", "Toggle\nLayer\n6", "Toggle\nLayer on or off)"),
+    K("TG(7)", "Toggle\nLayer\n7", "Toggle\nLayer on or off)"),
+    K("TG(8)", "Toggle\nLayer\n8", "Toggle\nLayer on or off)"),
+    K("TG(9)", "Toggle\nLayer\n9", "Toggle\nLayer on or off)"),
+    K("TG(10)", "Toggle\nLayer\n10", "Toggle\nLayer on or off)"),
+    K("TG(11)", "Toggle\nLayer\n11", "Toggle\nLayer on or off)"),
+]
+
+KEYCODES_LAYERS_TT = [
+    K("TT(0)", "TT\nLayer\n0", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(1)", "TT\nLayer\n1", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(2)", "TT\nLayer\n2", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(3)", "TT\nLayer\n3", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(4)", "TT\nLayer\n4", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(5)", "TT\nLayer\n5", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(6)", "TT\nLayer\n6", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(7)", "TT\nLayer\n7", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(8)", "TT\nLayer\n8", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(9)", "TT\nLayer\n9", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(10)", "TT\nLayer\n10", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+    K("TT(11)", "TT\nLayer\n11", "Normally acts like MO unless it's tapped multiple times, which toggles\nLayer on)"),
+]
+
+KEYCODES_LAYERS_OSL = [
+    K("OSL(0)", "One Shot\nLayer\n0", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(1)", "One Shot\nLayer\n1", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(2)", "One Shot\nLayer\n2", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(3)", "One Shot\nLayer\n3", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(4)", "One Shot\nLayer\n4", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(5)", "One Shot\nLayer\n5", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(6)", "One Shot\nLayer\n6", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(7)", "One Shot\nLayer\n7", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(8)", "One Shot\nLayer\n8", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(9)", "One Shot\nLayer\n9", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(10)", "One Shot\nLayer\n10", "Momentarily activates\nLayer until a key is pressed)"),
+    K("OSL(11)", "One Shot\nLayer\n11", "Momentarily activates\nLayer until a key is pressed)"),
+]
+
+KEYCODES_LAYERS_TO = [
+    K("TO(0)", "TO\nLayer\n0", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(1)", "TO\nLayer\n1", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(2)", "TO\nLayer\n2", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(3)", "TO\nLayer\n3", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(4)", "TO\nLayer\n4", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(5)", "TO\nLayer\n5", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(6)", "TO\nLayer\n6", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(7)", "TO\nLayer\n7", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(8)", "TO\nLayer\n8", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(9)", "TO\nLayer\n9", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(10)", "TO\nLayer\n10", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+    K("TO(11)", "TO\nLayer\n11", "Turns on\nLayer and turns off all other\nLayers, except the default\nLayer)"),
+]
+
+KEYCODES_LAYERS_LT = [
+    K("LT1(kc)", "LT\nLayer\n0", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT1(kc)", "LT\nLayer\n1", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT2(kc)", "LT\nLayer\n2", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT3(kc)", "LT\nLayer\n3", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT4(kc)", "LT\nLayer\n4", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT5(kc)", "LT\nLayer\n5", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT6(kc)", "LT\nLayer\n6", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT7(kc)", "LT\nLayer\n7", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT8(kc)", "LT\nLayer\n8", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT9(kc)", "LT\nLayer\n9", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT10(kc)", "LT\nLayer\n10", "kc on tap, switch to specified\nLayer while held)"),
+    K("LT11(kc)", "LT\nLayer\n11", "kc on tap, switch to specified\nLayer while held)"),
+]
+
+
+
+
+
 RESET_KEYCODE = "RESET"
 
 KEYCODES_BOOT = [
@@ -656,14 +782,6 @@ KEYCODES_QUANTUM = [
 ]
 
 KEYCODES_BACKLIGHT = [
-    K("BL_TOGG", "BL\nToggle", "Turn the backlight on or off"),
-    K("BL_STEP", "BL\nCycle", "Cycle through backlight levels"),
-    K("BL_BRTG", "BL\nBreath", "Toggle backlight breathing"),
-    K("BL_ON", "BL On", "Set the backlight to max brightness"),
-    K("BL_OFF", "BL Off", "Turn the backlight off"),
-    K("BL_INC", "BL +", "Increase the backlight level"),
-    K("BL_DEC", "BL - ", "Decrease the backlight level"),
-
     K("RGB_TOG", "RGB\nToggle", "Toggle RGB lighting on or off"),
     K("RGB_MOD", "RGB\nMode +", "Next RGB mode"),
     K("RGB_RMOD", "RGB\nMode -", "Previous RGB mode"),
@@ -673,17 +791,11 @@ KEYCODES_BACKLIGHT = [
     K("RGB_SAD", "Sat -", "Decrease saturation"),
     K("RGB_VAI", "Bright +", "Increase value"),
     K("RGB_VAD", "Bright -", "Decrease value"),
-    K("RGB_SPI", "Effect +", "Increase RGB effect speed"),
-    K("RGB_SPD", "Effect -", "Decrease RGB effect speed"),
+    K("RGB_SPI", "Speed +", "Increase RGB effect speed"),
+    K("RGB_SPD", "Speed -", "Decrease RGB effect speed"),
     K("RGB_M_P", "RGB\nMode P", "RGB Mode: Plain"),
     K("RGB_M_B", "RGB\nMode B", "RGB Mode: Breathe"),
     K("RGB_M_R", "RGB\nMode R", "RGB Mode: Rainbow"),
-    K("RGB_M_SW", "RGB\nMode SW", "RGB Mode: Swirl"),
-    K("RGB_M_SN", "RGB\nMode SN", "RGB Mode: Snake"),
-    K("RGB_M_K", "RGB\nMode K", "RGB Mode: Knight Rider"),
-    K("RGB_M_X", "RGB\nMode X", "RGB Mode: Christmas"),
-    K("RGB_M_G", "RGB\nMode G", "RGB Mode: Gradient"),
-    K("RGB_M_T", "RGB\nMode T", "RGB Mode: Test"),
 ]
 
 KEYCODES_MEDIA = [
@@ -763,198 +875,484 @@ KEYCODES_MEDIA = [
     K("KC_LSCR", "Locking\nScroll", "Locking Scroll Lock", alias=["KC_LOCKING_SCROLL"]),
 ]
 
-KEYCODES_TAP_DANCE = []
+KEYCODES_TAP_DANCE = [
+    K("TD(0)", "TapDance\n0", "TapDance0"),
+    K("TD(1)", "TapDance\n1", "TapDance1"),
+    K("TD(2)", "TapDance\n2", "TapDance2"),
+    K("TD(3)", "TapDance\n3", "TapDance3"),
+    K("TD(4)", "TapDance\n4", "TapDance4"),
+    K("TD(5)", "TapDance\n5", "TapDance5"),
+    K("TD(6)", "TapDance\n6", "TapDance6"),
+    K("TD(7)", "TapDance\n7", "TapDance7"),
+    K("TD(8)", "TapDance\n8", "TapDance8"),
+    K("TD(9)", "TapDance\n9", "TapDance9"),
+    K("TD(10)", "TapDance\n10", "TapDance10"),
+    K("TD(11)", "TapDance\n11", "TapDance11"),
+    K("TD(12)", "TapDance\n12", "TapDance12"),
+    K("TD(13)", "TapDance\n13", "TapDance13"),
+    K("TD(14)", "TapDance\n14", "TapDance14"),
+    K("TD(15)", "TapDance\n15", "TapDance15"),
+    K("TD(16)", "TapDance\n16", "TapDance16"),
+    K("TD(17)", "TapDance\n17", "TapDance17"),
+    K("TD(18)", "TapDance\n18", "TapDance18"),
+    K("TD(19)", "TapDance\n19", "TapDance19"),
+    K("TD(20)", "TapDance\n20", "TapDance20"),
+    K("TD(21)", "TapDance\n21", "TapDance21"),
+    K("TD(22)", "TapDance\n22", "TapDance22"),
+    K("TD(23)", "TapDance\n23", "TapDance23"),
+    K("TD(24)", "TapDance\n24", "TapDance24"),
+    K("TD(25)", "TapDance\n25", "TapDance25"),
+    K("TD(26)", "TapDance\n26", "TapDance26"),
+    K("TD(27)", "TapDance\n27", "TapDance27"),
+    K("TD(28)", "TapDance\n28", "TapDance28"),
+    K("TD(29)", "TapDance\n29", "TapDance29"),
+    K("TD(30)", "TapDance\n30", "TapDance30"),
+    K("TD(31)", "TapDance\n31", "TapDance31"),
+]
 
-KEYCODES_USER = []
+KEYCODES_USER = [
+    K("USER00", "USER00", "USER00"),
+    K("USER01", "USER01", "USER01"),
+    K("USER02", "USER02", "USER02"),
+    K("USER03", "USER03", "USER03"),
+    K("USER04", "USER04", "USER04"),
+    K("USER05", "USER05", "USER05"),
+    K("USER06", "USER06", "USER06"),
+    K("USER07", "USER07", "USER07"),
+    K("USER08", "USER08", "USER08"),
+    K("USER09", "USER09", "USER09"),
+    K("USER10", "USER10", "USER10"),
+    K("USER11", "USER11", "USER11"),
+    K("USER12", "USER12", "USER12"),
+    K("USER13", "USER13", "USER13"),
+    K("USER14", "USER14", "USER14"),
+    K("USER15", "USER15", "USER15"),
+]
 
-KEYCODES_MACRO = []
+KEYCODES_MACRO = [
+    K("M1", "Macro 0", "Macro 1"),
+    K("M1", "Macro 1", "Macro 1"),
+    K("M2", "Macro 2", "Macro 2"),
+    K("M3", "Macro 3", "Macro 3"),
+    K("M4", "Macro 4", "Macro 4"),
+    K("M5", "Macro 5", "Macro 5"),
+    K("M6", "Macro 6", "Macro 6"),
+    K("M7", "Macro 7", "Macro 7"),
+    K("M8", "Macro 8", "Macro 8"),
+    K("M9", "Macro 9", "Macro 9"),
+    K("M10", "Macro 10", "Macro 10"),
+    K("M11", "Macro 11", "Macro 11"),
+    K("M12", "Macro 12", "Macro 12"),
+    K("M13", "Macro 13", "Macro 13"),
+    K("M14", "Macro 14", "Macro 14"),
+    K("M15", "Macro 15", "Macro 15"),
+    K("M16", "Macro 16", "Macro 16"),
+    K("M17", "Macro 17", "Macro 17"),
+    K("M18", "Macro 18", "Macro 18"),
+    K("M19", "Macro 19", "Macro 19"),
+    K("M20", "Macro 20", "Macro 20"),
+    K("M21", "Macro 21", "Macro 21"),
+    K("M22", "Macro 22", "Macro 22"),
+    K("M23", "Macro 23", "Macro 23"),
+    K("M24", "Macro 24", "Macro 24"),
+    K("M25", "Macro 25", "Macro 25"),
+    K("M26", "Macro 26", "Macro 26"),
+    K("M27", "Macro 27", "Macro 27"),
+    K("M28", "Macro 28", "Macro 28"),
+    K("M29", "Macro 29", "Macro 29"),
+    K("M30", "Macro 30", "Macro 30"),
+    K("M31", "Macro 31", "Macro 31"),
+    K("M32", "Macro 32", "Macro 32"),
+    K("M33", "Macro 33", "Macro 33"),
+    K("M34", "Macro 34", "Macro 34"),
+    K("M35", "Macro 35", "Macro 35"),
+    K("M36", "Macro 36", "Macro 36"),
+    K("M37", "Macro 37", "Macro 37"),
+    K("M38", "Macro 38", "Macro 38"),
+    K("M39", "Macro 39", "Macro 39"),
+    K("M40", "Macro 40", "Macro 40"),
+    K("M41", "Macro 41", "Macro 41"),
+    K("M42", "Macro 42", "Macro 42"),
+    K("M43", "Macro 43", "Macro 43"),
+    K("M44", "Macro 44", "Macro 44"),
+    K("M45", "Macro 45", "Macro 45"),
+    K("M46", "Macro 46", "Macro 46"),
+    K("M47", "Macro 47", "Macro 47"),
+    K("M48", "Macro 48", "Macro 48"),
+    K("M49", "Macro 49", "Macro 49"),
+    K("M50", "Macro 50", "Macro 50"),
+    K("M51", "Macro 51", "Macro 51"),
+    K("M52", "Macro 52", "Macro 52"),
+    K("M53", "Macro 53", "Macro 53"),
+    K("M54", "Macro 54", "Macro 54"),
+    K("M55", "Macro 55", "Macro 55"),
+    K("M56", "Macro 56", "Macro 56"),
+    K("M57", "Macro 57", "Macro 57"),
+    K("M58", "Macro 58", "Macro 58"),
+    K("M59", "Macro 59", "Macro 59"),
+    K("M60", "Macro 60", "Macro 60"),
+    K("M61", "Macro 61", "Macro 61"),
+    K("M62", "Macro 62", "Macro 62"),
+    K("M63", "Macro 63", "Macro 63"),
+    K("M64", "Macro 64", "Macro 64"),
+    K("M65", "Macro 65", "Macro 65"),
+    K("M66", "Macro 66", "Macro 66"),
+    K("M67", "Macro 67", "Macro 67"),
+    K("M68", "Macro 68", "Macro 68"),
+    K("M69", "Macro 69", "Macro 69"),
+    K("M70", "Macro 70", "Macro 70"),
+    K("M71", "Macro 71", "Macro 71"),
+    K("M72", "Macro 72", "Macro 72"),
+    K("M73", "Macro 73", "Macro 73"),
+    K("M74", "Macro 74", "Macro 74"),
+    K("M75", "Macro 75", "Macro 75"),
+    K("M76", "Macro 76", "Macro 76"),
+    K("M77", "Macro 77", "Macro 77"),
+    K("M78", "Macro 78", "Macro 78"),
+    K("M79", "Macro 79", "Macro 79"),
+    K("M80", "Macro 80", "Macro 80"),
+    K("M81", "Macro 81", "Macro 81"),
+    K("M82", "Macro 82", "Macro 82"),
+    K("M83", "Macro 83", "Macro 83"),
+    K("M84", "Macro 84", "Macro 84"),
+    K("M85", "Macro 85", "Macro 85"),
+    K("M86", "Macro 86", "Macro 86"),
+    K("M87", "Macro 87", "Macro 87"),
+    K("M88", "Macro 88", "Macro 88"),
+    K("M89", "Macro 89", "Macro 89"),
+    K("M90", "Macro 90", "Macro 90"),
+    K("M91", "Macro 91", "Macro 91"),
+    K("M92", "Macro 92", "Macro 92"),
+    K("M93", "Macro 93", "Macro 93"),
+    K("M94", "Macro 94", "Macro 94"),
+    K("M95", "Macro 95", "Macro 95"),
+    K("M96", "Macro 96", "Macro 96"),
+    K("M97", "Macro 97", "Macro 97"),
+    K("M98", "Macro 98", "Macro 98"),
+    K("M99", "Macro 99", "Macro 99"),
+    K("M100", "Macro 100", "Macro 100"),
+    K("M101", "Macro 101", "Macro 101"),
+    K("M102", "Macro 102", "Macro 102"),
+    K("M103", "Macro 103", "Macro 103"),
+    K("M104", "Macro 104", "Macro 104"),
+    K("M105", "Macro 105", "Macro 105"),
+    K("M106", "Macro 106", "Macro 106"),
+    K("M107", "Macro 107", "Macro 107"),
+    K("M108", "Macro 108", "Macro 108"),
+    K("M109", "Macro 109", "Macro 109"),
+    K("M110", "Macro 110", "Macro 110"),
+    K("M111", "Macro 111", "Macro 111"),
+    K("M112", "Macro 112", "Macro 112"),
+    K("M113", "Macro 113", "Macro 113"),
+    K("M114", "Macro 114", "Macro 114"),
+    K("M115", "Macro 115", "Macro 115"),
+    K("M116", "Macro 116", "Macro 116"),
+    K("M117", "Macro 117", "Macro 117"),
+    K("M118", "Macro 118", "Macro 118"),
+    K("M119", "Macro 119", "Macro 119"),
+    K("M120", "Macro 120", "Macro 120"),
+    K("M121", "Macro 121", "Macro 121"),
+    K("M122", "Macro 122", "Macro 122"),
+    K("M123", "Macro 123", "Macro 123"),
+    K("M124", "Macro 124", "Macro 124"),
+    K("M125", "Macro 125", "Macro 125"),
+    K("M126", "Macro 126", "Macro 126"),
+    K("M127", "Macro 127", "Macro 127")
+]
+
 
 KEYCODES_MACRO_BASE = [
     K("DYN_REC_START1", "DM1\nRec", "Dynamic Macro 1 Rec Start", alias=["DM_REC1"]),
-    K("DYN_REC_START2", "DM2\nRec", "Dynamic Macro 2 Rec Start", alias=["DM_REC2"]),
-    K("DYN_REC_STOP", "DM Rec\nStop", "Dynamic Macro Rec Stop", alias=["DM_RSTP"]),
+    K("DYN_REC_START2", "DM2\nRec", "Dynamic Macro 2 Rec Start", alias=["DM_REC2"]),    
     K("DYN_MACRO_PLAY1", "DM1\nPlay", "Dynamic Macro 1 Play", alias=["DM_PLY1"]),
     K("DYN_MACRO_PLAY2", "DM2\nPlay", "Dynamic Macro 2 Play", alias=["DM_PLY2"]),
+    K("DYN_REC_STOP", "DM Rec\nStop", "Dynamic Macro Rec Stop", alias=["DM_RSTP"]),
 ]
 
 KEYCODES_MIDI = []
 
 KEYCODES_MIDI_BASIC = [
-    K("MI_C", "ᴹᴵᴰᴵ\nC", "Midi send note C"),
-    K("MI_Cs", "ᴹᴵᴰᴵ\nC#/Dᵇ", "Midi send note C#/Dᵇ", alias=["MI_Db"]),
-    K("MI_D", "ᴹᴵᴰᴵ\nD", "Midi send note D"),
-    K("MI_Ds", "ᴹᴵᴰᴵ\nD#/Eᵇ", "Midi send note D#/Eᵇ", alias=["MI_Eb"]),
-    K("MI_E", "ᴹᴵᴰᴵ\nE", "Midi send note E"),
-    K("MI_F", "ᴹᴵᴰᴵ\nF", "Midi send note F"),
-    K("MI_Fs", "ᴹᴵᴰᴵ\nF#/Gᵇ", "Midi send note F#/Gᵇ", alias=["MI_Gb"]),
-    K("MI_G", "ᴹᴵᴰᴵ\nG", "Midi send note G"),
-    K("MI_Gs", "ᴹᴵᴰᴵ\nG#/Aᵇ", "Midi send note G#/Aᵇ", alias=["MI_Ab"]),
-    K("MI_A", "ᴹᴵᴰᴵ\nA", "Midi send note A"),
-    K("MI_As", "ᴹᴵᴰᴵ\nA#/Bᵇ", "Midi send note A#/Bᵇ", alias=["MI_Bb"]),
-    K("MI_B", "ᴹᴵᴰᴵ\nB", "Midi send note B"),
+    K("MI_C", "Midi\nC", "Midi send note C"),
+    K("MI_Cs", "Midi\nC#/Dᵇ", "Midi send note C#/Dᵇ", alias=["MI_Db"]),
+    K("MI_D", "Midi\nD", "Midi send note D"),
+    K("MI_Ds", "Midi\nD#/Eᵇ", "Midi send note D#/Eᵇ", alias=["MI_Eb"]),
+    K("MI_E", "Midi\nE", "Midi send note E"),
+    K("MI_F", "Midi\nF", "Midi send note F"),
+    K("MI_Fs", "Midi\nF#/Gᵇ", "Midi send note F#/Gᵇ", alias=["MI_Gb"]),
+    K("MI_G", "Midi\nG", "Midi send note G"),
+    K("MI_Gs", "Midi\nG#/Aᵇ", "Midi send note G#/Aᵇ", alias=["MI_Ab"]),
+    K("MI_A", "Midi\nA", "Midi send note A"),
+    K("MI_As", "Midi\nA#/Bᵇ", "Midi send note A#/Bᵇ", alias=["MI_Bb"]),
+    K("MI_B", "Midi\nB", "Midi send note B"),
 
-    K("MI_C_1", "ᴹᴵᴰᴵ\nC₁", "Midi send note C₁"),
-    K("MI_Cs_1", "ᴹᴵᴰᴵ\nC#₁/Dᵇ₁", "Midi send note C#₁/Dᵇ₁", alias=["MI_Db_1"]),
-    K("MI_D_1", "ᴹᴵᴰᴵ\nD₁", "Midi send note D₁"),
-    K("MI_Ds_1", "ᴹᴵᴰᴵ\nD#₁/Eᵇ₁", "Midi send note D#₁/Eᵇ₁", alias=["MI_Eb_1"]),
-    K("MI_E_1", "ᴹᴵᴰᴵ\nE₁", "Midi send note E₁"),
-    K("MI_F_1", "ᴹᴵᴰᴵ\nF₁", "Midi send note F₁"),
-    K("MI_Fs_1", "ᴹᴵᴰᴵ\nF#₁/Gᵇ₁", "Midi send note F#₁/Gᵇ₁", alias=["MI_Gb_1"]),
-    K("MI_G_1", "ᴹᴵᴰᴵ\nG₁", "Midi send note G₁"),
-    K("MI_Gs_1", "ᴹᴵᴰᴵ\nG#₁/Aᵇ₁", "Midi send note G#₁/Aᵇ₁", alias=["MI_Ab_1"]),
-    K("MI_A_1", "ᴹᴵᴰᴵ\nA₁", "Midi send note A₁"),
-    K("MI_As_1", "ᴹᴵᴰᴵ\nA#₁/Bᵇ₁", "Midi send note A#₁/Bᵇ₁", alias=["MI_Bb_1"]),
-    K("MI_B_1", "ᴹᴵᴰᴵ\nB₁", "Midi send note B₁"),
+    K("MI_C_1", "Midi\nC₁", "Midi send note C₁"),
+    K("MI_Cs_1", "Midi\nC#₁/Dᵇ₁", "Midi send note C#₁/Dᵇ₁", alias=["MI_Db_1"]),
+    K("MI_D_1", "Midi\nD₁", "Midi send note D₁"),
+    K("MI_Ds_1", "Midi\nD#₁/Eᵇ₁", "Midi send note D#₁/Eᵇ₁", alias=["MI_Eb_1"]),
+    K("MI_E_1", "Midi\nE₁", "Midi send note E₁"),
+    K("MI_F_1", "Midi\nF₁", "Midi send note F₁"),
+    K("MI_Fs_1", "Midi\nF#₁/Gᵇ₁", "Midi send note F#₁/Gᵇ₁", alias=["MI_Gb_1"]),
+    K("MI_G_1", "Midi\nG₁", "Midi send note G₁"),
+    K("MI_Gs_1", "Midi\nG#₁/Aᵇ₁", "Midi send note G#₁/Aᵇ₁", alias=["MI_Ab_1"]),
+    K("MI_A_1", "Midi\nA₁", "Midi send note A₁"),
+    K("MI_As_1", "Midi\nA#₁/Bᵇ₁", "Midi send note A#₁/Bᵇ₁", alias=["MI_Bb_1"]),
+    K("MI_B_1", "Midi\nB₁", "Midi send note B₁"),
 
-    K("MI_C_2", "ᴹᴵᴰᴵ\nC₂", "Midi send note C₂"),
-    K("MI_Cs_2", "ᴹᴵᴰᴵ\nC#₂/Dᵇ₂", "Midi send note C#₂/Dᵇ₂", alias=["MI_Db_2"]),
-    K("MI_D_2", "ᴹᴵᴰᴵ\nD₂", "Midi send note D₂"),
-    K("MI_Ds_2", "ᴹᴵᴰᴵ\nD#₂/Eᵇ₂", "Midi send note D#₂/Eᵇ₂", alias=["MI_Eb_2"]),
-    K("MI_E_2", "ᴹᴵᴰᴵ\nE₂", "Midi send note E₂"),
-    K("MI_F_2", "ᴹᴵᴰᴵ\nF₂", "Midi send note F₂"),
-    K("MI_Fs_2", "ᴹᴵᴰᴵ\nF#₂/Gᵇ₂", "Midi send note F#₂/Gᵇ₂", alias=["MI_Gb_2"]),
-    K("MI_G_2", "ᴹᴵᴰᴵ\nG₂", "Midi send note G₂"),
-    K("MI_Gs_2", "ᴹᴵᴰᴵ\nG#₂/Aᵇ₂", "Midi send note G#₂/Aᵇ₂", alias=["MI_Ab_2"]),
-    K("MI_A_2", "ᴹᴵᴰᴵ\nA₂", "Midi send note A₂"),
-    K("MI_As_2", "ᴹᴵᴰᴵ\nA#₂/Bᵇ₂", "Midi send note A#₂/Bᵇ₂", alias=["MI_Bb_2"]),
-    K("MI_B_2", "ᴹᴵᴰᴵ\nB₂", "Midi send note B₂"),
+    K("MI_C_2", "Midi\nC₂", "Midi send note C₂"),
+    K("MI_Cs_2", "Midi\nC#₂/Dᵇ₂", "Midi send note C#₂/Dᵇ₂", alias=["MI_Db_2"]),
+    K("MI_D_2", "Midi\nD₂", "Midi send note D₂"),
+    K("MI_Ds_2", "Midi\nD#₂/Eᵇ₂", "Midi send note D#₂/Eᵇ₂", alias=["MI_Eb_2"]),
+    K("MI_E_2", "Midi\nE₂", "Midi send note E₂"),
+    K("MI_F_2", "Midi\nF₂", "Midi send note F₂"),
+    K("MI_Fs_2", "Midi\nF#₂/Gᵇ₂", "Midi send note F#₂/Gᵇ₂", alias=["MI_Gb_2"]),
+    K("MI_G_2", "Midi\nG₂", "Midi send note G₂"),
+    K("MI_Gs_2", "Midi\nG#₂/Aᵇ₂", "Midi send note G#₂/Aᵇ₂", alias=["MI_Ab_2"]),
+    K("MI_A_2", "Midi\nA₂", "Midi send note A₂"),
+    K("MI_As_2", "Midi\nA#₂/Bᵇ₂", "Midi send note A#₂/Bᵇ₂", alias=["MI_Bb_2"]),
+    K("MI_B_2", "Midi\nB₂", "Midi send note B₂"),
 
-    K("MI_C_3", "ᴹᴵᴰᴵ\nC₃", "Midi send note C₃"),
-    K("MI_Cs_3", "ᴹᴵᴰᴵ\nC#₃/Dᵇ₃", "Midi send note C#₃/Dᵇ₃", alias=["MI_Db_3"]),
-    K("MI_D_3", "ᴹᴵᴰᴵ\nD₃", "Midi send note D₃"),
-    K("MI_Ds_3", "ᴹᴵᴰᴵ\nD#₃/Eᵇ₃", "Midi send note D#₃/Eᵇ₃", alias=["MI_Eb_3"]),
-    K("MI_E_3", "ᴹᴵᴰᴵ\nE₃", "Midi send note E₃"),
-    K("MI_F_3", "ᴹᴵᴰᴵ\nF₃", "Midi send note F₃"),
-    K("MI_Fs_3", "ᴹᴵᴰᴵ\nF#₃/Gᵇ₃", "Midi send note F#₃/Gᵇ₃", alias=["MI_Gb_3"]),
-    K("MI_G_3", "ᴹᴵᴰᴵ\nG₃", "Midi send note G₃"),
-    K("MI_Gs_3", "ᴹᴵᴰᴵ\nG#₃/Aᵇ₃", "Midi send note G#₃/Aᵇ₃", alias=["MI_Ab_3"]),
-    K("MI_A_3", "ᴹᴵᴰᴵ\nA₃", "Midi send note A₃"),
-    K("MI_As_3", "ᴹᴵᴰᴵ\nA#₃/Bᵇ₃", "Midi send note A#₃/Bᵇ₃", alias=["MI_Bb_3"]),
-    K("MI_B_3", "ᴹᴵᴰᴵ\nB₃", "Midi send note B₃"),
+    K("MI_C_3", "Midi\nC₃", "Midi send note C₃"),
+    K("MI_Cs_3", "Midi\nC#₃/Dᵇ₃", "Midi send note C#₃/Dᵇ₃", alias=["MI_Db_3"]),
+    K("MI_D_3", "Midi\nD₃", "Midi send note D₃"),
+    K("MI_Ds_3", "Midi\nD#₃/Eᵇ₃", "Midi send note D#₃/Eᵇ₃", alias=["MI_Eb_3"]),
+    K("MI_E_3", "Midi\nE₃", "Midi send note E₃"),
+    K("MI_F_3", "Midi\nF₃", "Midi send note F₃"),
+    K("MI_Fs_3", "Midi\nF#₃/Gᵇ₃", "Midi send note F#₃/Gᵇ₃", alias=["MI_Gb_3"]),
+    K("MI_G_3", "Midi\nG₃", "Midi send note G₃"),
+    K("MI_Gs_3", "Midi\nG#₃/Aᵇ₃", "Midi send note G#₃/Aᵇ₃", alias=["MI_Ab_3"]),
+    K("MI_A_3", "Midi\nA₃", "Midi send note A₃"),
+    K("MI_As_3", "Midi\nA#₃/Bᵇ₃", "Midi send note A#₃/Bᵇ₃", alias=["MI_Bb_3"]),
+    K("MI_B_3", "Midi\nB₃", "Midi send note B₃"),
 
-    K("MI_C_4", "ᴹᴵᴰᴵ\nC₄", "Midi send note C₄"),
-    K("MI_Cs_4", "ᴹᴵᴰᴵ\nC#₄/Dᵇ₄", "Midi send note C#₄/Dᵇ₄", alias=["MI_Db_4"]),
-    K("MI_D_4", "ᴹᴵᴰᴵ\nD₄", "Midi send note D₄"),
-    K("MI_Ds_4", "ᴹᴵᴰᴵ\nD#₄/Eᵇ₄", "Midi send note D#₄/Eᵇ₄", alias=["MI_Eb_4"]),
-    K("MI_E_4", "ᴹᴵᴰᴵ\nE₄", "Midi send note E₄"),
-    K("MI_F_4", "ᴹᴵᴰᴵ\nF₄", "Midi send note F₄"),
-    K("MI_Fs_4", "ᴹᴵᴰᴵ\nF#₄/Gᵇ₄", "Midi send note F#₄/Gᵇ₄", alias=["MI_Gb_4"]),
-    K("MI_G_4", "ᴹᴵᴰᴵ\nG₄", "Midi send note G₄"),
-    K("MI_Gs_4", "ᴹᴵᴰᴵ\nG#₄/Aᵇ₄", "Midi send note G#₄/Aᵇ₄", alias=["MI_Ab_4"]),
-    K("MI_A_4", "ᴹᴵᴰᴵ\nA₄", "Midi send note A₄"),
-    K("MI_As_4", "ᴹᴵᴰᴵ\nA#₄/Bᵇ₄", "Midi send note A#₄/Bᵇ₄", alias=["MI_Bb_4"]),
-    K("MI_B_4", "ᴹᴵᴰᴵ\nB₄", "Midi send note B₄"),
+    K("MI_C_4", "Midi\nC₄", "Midi send note C₄"),
+    K("MI_Cs_4", "Midi\nC#₄/Dᵇ₄", "Midi send note C#₄/Dᵇ₄", alias=["MI_Db_4"]),
+    K("MI_D_4", "Midi\nD₄", "Midi send note D₄"),
+    K("MI_Ds_4", "Midi\nD#₄/Eᵇ₄", "Midi send note D#₄/Eᵇ₄", alias=["MI_Eb_4"]),
+    K("MI_E_4", "Midi\nE₄", "Midi send note E₄"),
+    K("MI_F_4", "Midi\nF₄", "Midi send note F₄"),
+    K("MI_Fs_4", "Midi\nF#₄/Gᵇ₄", "Midi send note F#₄/Gᵇ₄", alias=["MI_Gb_4"]),
+    K("MI_G_4", "Midi\nG₄", "Midi send note G₄"),
+    K("MI_Gs_4", "Midi\nG#₄/Aᵇ₄", "Midi send note G#₄/Aᵇ₄", alias=["MI_Ab_4"]),
+    K("MI_A_4", "Midi\nA₄", "Midi send note A₄"),
+    K("MI_As_4", "Midi\nA#₄/Bᵇ₄", "Midi send note A#₄/Bᵇ₄", alias=["MI_Bb_4"]),
+    K("MI_B_4", "Midi\nB₄", "Midi send note B₄"),
 
-    K("MI_C_5", "ᴹᴵᴰᴵ\nC₅", "Midi send note C₅"),
-    K("MI_Cs_5", "ᴹᴵᴰᴵ\nC#₅/Dᵇ₅", "Midi send note C#₅/Dᵇ₅", alias=["MI_Db_5"]),
-    K("MI_D_5", "ᴹᴵᴰᴵ\nD₅", "Midi send note D₅"),
-    K("MI_Ds_5", "ᴹᴵᴰᴵ\nD#₅/Eᵇ₅", "Midi send note D#₅/Eᵇ₅", alias=["MI_Eb_5"]),
-    K("MI_E_5", "ᴹᴵᴰᴵ\nE₅", "Midi send note E₅"),
-    K("MI_F_5", "ᴹᴵᴰᴵ\nF₅", "Midi send note F₅"),
-    K("MI_Fs_5", "ᴹᴵᴰᴵ\nF#₅/Gᵇ₅", "Midi send note F#₅/Gᵇ₅", alias=["MI_Gb_5"]),
-    K("MI_G_5", "ᴹᴵᴰᴵ\nG₅", "Midi send note G₅"),
-    K("MI_Gs_5", "ᴹᴵᴰᴵ\nG#₅/Aᵇ₅", "Midi send note G#₅/Aᵇ₅", alias=["MI_Ab_5"]),
-    K("MI_A_5", "ᴹᴵᴰᴵ\nA₅", "Midi send note A₅"),
-    K("MI_As_5", "ᴹᴵᴰᴵ\nA#₅/Bᵇ₅", "Midi send note A#₅/Bᵇ₅", alias=["MI_Bb_5"]),
-    K("MI_B_5", "ᴹᴵᴰᴵ\nB₅", "Midi send note B₅"),
+    K("MI_C_5", "Midi\nC₅", "Midi send note C₅"),
+    K("MI_Cs_5", "Midi\nC#₅/Dᵇ₅", "Midi send note C#₅/Dᵇ₅", alias=["MI_Db_5"]),
+    K("MI_D_5", "Midi\nD₅", "Midi send note D₅"),
+    K("MI_Ds_5", "Midi\nD#₅/Eᵇ₅", "Midi send note D#₅/Eᵇ₅", alias=["MI_Eb_5"]),
+    K("MI_E_5", "Midi\nE₅", "Midi send note E₅"),
+    K("MI_F_5", "Midi\nF₅", "Midi send note F₅"),
+    K("MI_Fs_5", "Midi\nF#₅/Gᵇ₅", "Midi send note F#₅/Gᵇ₅", alias=["MI_Gb_5"]),
+    K("MI_G_5", "Midi\nG₅", "Midi send note G₅"),
+    K("MI_Gs_5", "Midi\nG#₅/Aᵇ₅", "Midi send note G#₅/Aᵇ₅", alias=["MI_Ab_5"]),
+    K("MI_A_5", "Midi\nA₅", "Midi send note A₅"),
+    K("MI_As_5", "Midi\nA#₅/Bᵇ₅", "Midi send note A#₅/Bᵇ₅", alias=["MI_Bb_5"]),
+    K("MI_B_5", "Midi\nB₅", "Midi send note B₅"),
 
-    K("MI_ALLOFF", "ᴹᴵᴰᴵ\nNotesᵒᶠᶠ", "Midi send all notes OFF"),
+    K("MI_ALLOFF", "All\nNotes\nOff", "Midi send all notes OFF"),
+    K("MI_SUS", "Sustain\nPedal", "Midi Sustain"),
+    K("KC_NO", "", "None"),
 ]
 
 KEYCODES_MIDI_ADVANCED = [
-    K("MI_SUS", "ᴹᴵᴰᴵ\nSust", "Midi Sustain"),
-    K("MI_PORT", "ᴹᴵᴰᴵ\nPort", "Midi Portmento"),
-    K("MI_SOST", "ᴹᴵᴰᴵ\nSost", "Midi Sostenuto"),
-    K("MI_SOFT", "ᴹᴵᴰᴵ\nSPedal", "Midi Soft Pedal"),
-    K("MI_LEG", "ᴹᴵᴰᴵ\nLegat", "Midi Legato"),
-    K("MI_MOD", "ᴹᴵᴰᴵ\nModul", "Midi Modulation"),
-    K("MI_MODSD", "ᴹᴵᴰᴵ\nModulᴰᴺ", "Midi decrease modulation speed"),
-    K("MI_MODSU", "ᴹᴵᴰᴵ\nModulᵁᴾ", "Midi increase modulation speed"),
-    K("MI_BENDD", "ᴹᴵᴰᴵ\nBendᴰᴺ", "Midi bend pitch down"),
-    K("MI_BENDU", "ᴹᴵᴰᴵ\nBendᵁᴾ", "Midi bend pitch up"),
+    K("MI_ALLOFF", "All\nNotes\nOff", "Midi send all notes OFF"),
+    K("MI_SUS", "Sustain\nPedal", "Midi Sustain"),
+    K("MI_PORT", "Portmento", "Midi Portmento"),
+    K("MI_SOST", "Sostenuto", "Midi Sostenuto"),
+    K("MI_SOFT", "Soft\nSPedal", "Midi Soft Pedal"),
+    K("MI_LEG", "Legato", "Midi Legato"),
+    K("MI_MOD", "Modulation", "Midi Modulation"),
+    K("MI_MODSD", "Mod\nSpeed ▼", "Midi decrease modulation speed"),
+    K("MI_MODSU", "Mod\nSpeed ▲", "Midi increase modulation speed"),
+    K("MI_BENDD", "Pitch\nBend ▼", "Midi bend pitch down"),
+    K("MI_BENDU", "Pitch\nBend ▲", "Midi bend pitch up"),
 ]
 
-KEYCODES_MIDI_TRANSPOSITION = [
-    K("MI_OCT_N2", "ᴼᶜᵗᵃᵛᵉ\n-2", "Midi set octave to -2"),
-    K("MI_OCT_N1", "ᴼᶜᵗᵃᵛᵉ\n-1", "Midi set octave to -1"),
-    K("MI_OCT_0", "ᴼᶜᵗᵃᵛᵉ\nᴰᵉᶠᵃᵘˡᵗ", "Midi set octave to 0"),
-    K("MI_OCT_1", "ᴼᶜᵗᵃᵛᵉ\n+1", "Midi set octave to 1"),
-    K("MI_OCT_2", "ᴼᶜᵗᵃᵛᵉ\n+2", "Midi set octave to 2"),
-    K("MI_OCT_3", "ᴼᶜᵗᵃᵛᵉ\n+3", "Midi set octave to 3"),
-    K("MI_OCT_4", "ᴼᶜᵗᵃᵛᵉ\n+4", "Midi set octave to 4"),
-    K("MI_OCT_5", "ᴼᶜᵗᵃᵛᵉ\n+5", "Midi set octave to 5"),
-    K("MI_OCT_6", "ᴼᶜᵗᵃᵛᵉ\n+6", "Midi set octave to 6"),
-    K("MI_OCT_7", "ᴼᶜᵗᵃᵛᵉ\n+7", "Midi set octave to 7"),
-    K("MI_OCTD", "ᴼᶜᵗᵃᵛᵉ\nDown", "Midi move down an octave"),
-    K("MI_OCTU", "ᴼᶜᵗᵃᵛᵉ\nUp", "Midi move up an octave"),
-    
-    K("MI_TRNSD", "ᵗʳᵃⁿˢᵖᵒˢᵉ\nDown", "Midi decrease transposition"),
-    K("MI_TRNSU", "ᵗʳᵃⁿˢᵖᵒˢᵉ\nUp", "Midi increase transposition"),
-    K("MI_TRNS_0", "Key\nCᵐᵃʲᵒʳ\nAᵐᶦⁿᵒʳ", "Midi set no transposition"),
-    K("MI_TRNS_1", "Key\nC#ᵐᵃʲᵒʳ\nA#ᵐᶦⁿᵒʳ", "Midi set transposition to +1 semitones"),
-    K("MI_TRNS_2", "Key\nDᵐᵃʲᵒʳ\nBᵐᶦⁿᵒʳ", "Midi set transposition to +2 semitones"),
-    K("MI_TRNS_3", "Key\nD#ᵐᵃʲᵒʳ\nCᵐᶦⁿᵒʳ", "Midi set transposition to +3 semitones"),
-    K("MI_TRNS_4", "Key\nEᵐᵃʲᵒʳ\nC#ᵐᶦⁿᵒʳ", "Midi set transposition to +4 semitones"),
-    K("MI_TRNS_5", "Key\nFᵐᵃʲᵒʳ\nDᵐᶦⁿᵒʳ", "Midi set transposition to +5 semitones"),
-    K("MI_TRNS_6", "Key\nF#ᵐᵃʲᵒʳ\nD#ᵐᶦⁿᵒʳ", "Midi set transposition to +6 semitones"),
-    K("MI_TRNS_N5", "Key\nGᵐᵃʲᵒʳ\nEᵐᶦⁿᵒʳ", "Midi set transposition to -5 semitones"),
-    K("MI_TRNS_N4", "Key\nG#ᵐᵃʲᵒʳ\nFᵐᶦⁿᵒʳ", "Midi set transposition to -4 semitones"),
-    K("MI_TRNS_N3", "Key\nAᵐᵃʲᵒʳ\nF#ᵐᶦⁿᵒʳ", "Midi set transposition to -3 semitones"),
-    K("MI_TRNS_N2", "Key\nA#ᵐᵃʲᵒʳ\nGᵐᶦⁿᵒʳ", "Midi set transposition to -2 semitones"),
-    K("MI_TRNS_N1", "Key\nBᵐᵃʲᵒʳ\nG#ᵐᶦⁿᵒʳ\n", "Midi set transposition to -1 semitones"),
-
-
+KEYCODES_MIDI_PEDAL = [
+    K("MI_ALLOFF", "All\nNotes\nOff", "Midi send all notes OFF"),
+    K("MI_SUS", "Sustain\nPedal", "Midi Sustain"),
 ]
-KEYCODES_MIDI_VELOCITYENCODER = [
-    K("MI_VELD", "ⱽᵉˡᵒᶜᶦᵗʸ\nDown", "Midi decrease velocity"),
-    K("MI_VELU", "ⱽᵉˡᵒᶜᶦᵗʸ\nUp", "Midi increase velocity"),
+
+KEYCODES_MIDI_OCTAVE = [
+    K("MI_OCT_N2", "Octave\n-2", "Midi set octave to -2"),
+    K("MI_OCT_N1", "Octave\n-1", "Midi set octave to -1"),
+    K("MI_OCT_0", "Octave\n 0", "Midi set octave to 0"),
+    K("MI_OCT_1", "Octave\n+1", "Midi set octave to 1"),
+    K("MI_OCT_2", "Octave\n+2", "Midi set octave to 2"),
+    K("MI_OCT_3", "Octave\n+3", "Midi set octave to 3"),
+    K("MI_OCT_4", "Octave\n+4", "Midi set octave to 4"),
+    K("MI_OCT_5", "Octave\n+5", "Midi set octave to 5"),
+    K("MI_OCT_6", "Octave\n+6", "Midi set octave to 6"),
+    K("MI_OCT_7", "Octave\n+7", "Midi set octave to 7"),
+] 
+
+KEYCODES_MIDI_UPDOWN = [  
+    K("MI_TRNSU", "Transpose\n▲", "Midi increase transposition"),    
+    K("MI_OCTU", "Octave\n▲", "Midi move up an octave"),   
+    K("MI_CHU", "Channel\n▲", "Midi increase channel"),    
+    K("MI_VELOCITY_UP", "Velocity\n▲", "Midi increase velocity"),    
+    K("MI_TRNSD", "Transpose\n▼", "Midi decrease transposition"),
+    K("MI_OCTD", "Octave\n▼", "Midi move down an octave"),
+    K("MI_CHD", "Channel\n▼", "Midi decrease channel"),
+    K("MI_VELOCITY_DOWN", "Velocity\n▼", "Midi decrease velocity"), 
+]    
+
+KEYCODES_MIDI_KEY = [
+    K("MI_TRNS_0", "Key\nC Major\nA minor", "Midi set no transposition"),
+    K("MI_TRNS_1", "Key\nC# Major\nA# minor", "Midi set transposition to +1 semitones"),
+    K("MI_TRNS_2", "Key\nD Major\nB minor", "Midi set transposition to +2 semitones"),
+    K("MI_TRNS_3", "Key\nD# Major\nC minor", "Midi set transposition to +3 semitones"),
+    K("MI_TRNS_4", "Key\nE Major\nC# minor", "Midi set transposition to +4 semitones"),
+    K("MI_TRNS_5", "Key\nF Major\nD minor", "Midi set transposition to +5 semitones"),
+    K("MI_TRNS_6", "Key\nF# Major\nD# minor", "Midi set transposition to +6 semitones"),
+    K("MI_TRNS_N5", "Key\nG Major\nE minor", "Midi set transposition to -5 semitones"),
+    K("MI_TRNS_N4", "Key\nG# Major\nF minor", "Midi set transposition to -4 semitones"),
+    K("MI_TRNS_N3", "Key\nA Major\nF# minor", "Midi set transposition to -3 semitones"),
+    K("MI_TRNS_N2", "Key\nA# Major\nG minor", "Midi set transposition to -2 semitones"),
+    K("MI_TRNS_N1", "Key B Major\n G# Minor", "Midi set transposition to -1 semitones"),
 ]
 
 KEYCODES_MIDI_CHANNEL = [
-    K("MI_CH1", "ᴹᴵᴰᴵ\nCH₁", "Midi set channel to 1"),
-    K("MI_CH2", "ᴹᴵᴰᴵ\nCH₂", "Midi set channel to 2"),
-    K("MI_CH3", "ᴹᴵᴰᴵ\nCH₃", "Midi set channel to 3"),
-    K("MI_CH4", "ᴹᴵᴰᴵ\nCH₄", "Midi set channel to 4"),
-    K("MI_CH5", "ᴹᴵᴰᴵ\nCH₅", "Midi set channel to 5"),
-    K("MI_CH6", "ᴹᴵᴰᴵ\nCH₆", "Midi set channel to 6"),
-    K("MI_CH7", "ᴹᴵᴰᴵ\nCH₇", "Midi set channel to 7"),
-    K("MI_CH8", "ᴹᴵᴰᴵ\nCH₈", "Midi set channel to 8"),
-    K("MI_CH9", "ᴹᴵᴰᴵ\nCH₉", "Midi set channel to 9"),
-    K("MI_CH10", "ᴹᴵᴰᴵ\nCH₁₀", "Midi set channel to 10"),
-    K("MI_CH11", "ᴹᴵᴰᴵ\nCH₁₁", "Midi set channel to 11"),
-    K("MI_CH12", "ᴹᴵᴰᴵ\nCH₁₂", "Midi set channel to 12"),
-    K("MI_CH13", "ᴹᴵᴰᴵ\nCH₁₃", "Midi set channel to 13"),
-    K("MI_CH14", "ᴹᴵᴰᴵ\nCH₁₄", "Midi set channel to 14"),
-    K("MI_CH15", "ᴹᴵᴰᴵ\nCH₁₅", "Midi set channel to 15"),
-    K("MI_CH16", "ᴹᴵᴰᴵ\nCH₁₆", "Midi set channel to 16"),
-    K("MI_CHD", "ᴹᴵᴰᴵ\nCHᴰᴺ", "Midi decrease channel"),
-    K("MI_CHU", "ᴹᴵᴰᴵ\nCHᵁᴾ", "Midi increase channel"),
+    K("MI_CH1", "Channel\n1", "Midi set channel to 1"),
+    K("MI_CH2", "Channel\n2", "Midi set channel to 2"),
+    K("MI_CH3", "Channel\n3", "Midi set channel to 3"),
+    K("MI_CH4", "Channel\n4", "Midi set channel to 4"),
+    K("MI_CH5", "Channel\n5", "Midi set channel to 5"),
+    K("MI_CH6", "Channel\n6", "Midi set channel to 6"),
+    K("MI_CH7", "Channel\n7", "Midi set channel to 7"),
+    K("MI_CH8", "Channel\n8", "Midi set channel to 8"),
+    K("MI_CH9", "Channel\n9", "Midi set channel to 9"),
+    K("MI_CH10", "Channel\n10", "Midi set channel to 10"),
+    K("MI_CH11", "Channel\n11", "Midi set channel to 11"),
+    K("MI_CH12", "Channel\n12", "Midi set channel to 12"),
+    K("MI_CH13", "Channel\n13", "Midi set channel to 13"),
+    K("MI_CH14", "Channel\n14", "Midi set channel to 14"),
+    K("MI_CH15", "Channel\n15", "Midi set channel to 15"),
+    K("MI_CH16", "Channel\n16", "Midi set channel to 16"),
 ]
 
-KEYCODES_MIDI_CHORD = [
+KEYCODES_CC_STEPSIZE = [
+    K("CC_STEPSIZE_1", "CC\nUp/Down\nx1", "SET CC Up/Down TO X1"),
+    K("CC_STEPSIZE_2", "CC\nUp/Down\nx2", "SET CC Up/Down TO X2"),
+    K("CC_STEPSIZE_3", "CC\nUp/Down\nx3", "SET CC Up/Down TO X3"),
+    K("CC_STEPSIZE_4", "CC\nUp/Down\nx4", "SET CC Up/Down TO X4"),
+    K("CC_STEPSIZE_5", "CC\nUp/Down\nx5", "SET CC Up/Down TO X5"),
+    K("CC_STEPSIZE_6", "CC\nUp/Down\nx6", "SET CC Up/Down TO X6"),
+    K("CC_STEPSIZE_7", "CC\nUp/Down\nx7", "SET CC Up/Down TO X7"),
+    K("CC_STEPSIZE_8", "CC\nUp/Down\nx8", "SET CC Up/Down TO X8"),
+    K("CC_STEPSIZE_9", "CC\nUp/Down\nx9", "SET CC Up/Down TO X9"),
+    K("CC_STEPSIZE_10", "CC\nUp/Down\nx10", "SET CC Up/Down TO X10"),
+    K("CC_STEPSIZE_11", "CC\nUp/Down\nx11", "SET CC Up/Down TO X1"),
+    K("CC_STEPSIZE_12", "CC\nUp/Down\nx12", "SET CC Up/Down TO X2"),
+    K("CC_STEPSIZE_13", "CC\nUp/Down\nx13", "SET CC Up/Down TO X3"),
+    K("CC_STEPSIZE_14", "CC\nUp/Down\nx14", "SET CC Up/Down TO X4"),
+    K("CC_STEPSIZE_15", "CC\nUp/Down\nx15", "SET CC Up/Down TO X5"),
+    K("CC_STEPSIZE_16", "CC\nUp/Down\nx16", "SET CC Up/Down TO X6"),
+]
+
+KEYCODES_VELOCITY_STEPSIZE = [
+    K("MI_VELOCITY_STEPSIZE_1", "Velocity\nUp/Down\nx1", "SET Velocity Up/Down x1"),
+    K("MI_VELOCITY_STEPSIZE_2", "Velocity\nUp/Down\nx2", "SET Velocity Up/Down TO x2"),
+    K("MI_VELOCITY_STEPSIZE_3", "Velocity\nUp/Down\nx3", "SET Velocity Up/Down TO x3"),
+    K("MI_VELOCITY_STEPSIZE_4", "Velocity\nUp/Down\nx4", "SET Velocity Up/Down TO x4"),
+    K("MI_VELOCITY_STEPSIZE_5", "Velocity\nUp/Down\nx5", "SET Velocity Up/Down TO x5"),
+    K("MI_VELOCITY_STEPSIZE_6", "Velocity\nUp/Down\nx6", "SET Velocity Up/Down TO x6"),
+    K("MI_VELOCITY_STEPSIZE_7", "Velocity\nUp/Down\nx7", "SET Velocity Up/Down TO x7"),
+    K("MI_VELOCITY_STEPSIZE_8", "Velocity\nUp/Down\nx8", "SET Velocity Up/Down TO x8"),
+    K("MI_VELOCITY_STEPSIZE_9", "Velocity\nUp/Down\nx9", "SET Velocity Up/Down TO x9"),
+    K("MI_VELOCITY_STEPSIZE_10", "Velocity\nUp/Down\nx10", "SET Velocity Up/Down TO x10"),
+]
+
+KEYCODES_MIDI_SMARTCHORDBUTTONS = [
+    K("MI_SMARTCHORD_PRESS", "Smartchord", "Press Smartchord"),
+    K("MI_SMARTCHORD_UP", "Smartchord\n▲", "Smartchord Up"),
+    K("MI_SMARTCHORD_DOWN", "Smartchord\n▼", "Smartchord Down"),
+]
+
+KEYCODES_MIDI_CHANNEL_HOLD = [
+    K("MI_CHANNEL_HOLD_1", "HOLD\nChannel\n1", "Hold for MIDI channel 1, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_2", "HOLD\nChannel\n2", "Hold for MIDI channel 2, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_3", "HOLD\nChannel\n3", "Hold for MIDI channel 3, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_4", "HOLD\nChannel\n4", "Hold for MIDI channel 4, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_5", "HOLD\nChannel\n5", "Hold for MIDI channel 5, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_6", "HOLD\nChannel\n6", "Hold for MIDI channel 6, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_7", "HOLD\nChannel\n7", "Hold for MIDI channel 7, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_8", "HOLD\nChannel\n8", "Hold for MIDI channel 8, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_9", "HOLD\nChannel\n9", "Hold for MIDI channel 9, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_10", "HOLD\nChannel\n10", "Hold for MIDI channel 10, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_11", "HOLD\nChannel\n11", "Hold for MIDI channel 11, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_12", "HOLD\nChannel\n12", "Hold for MIDI channel 12, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_13", "HOLD\nChannel\n13", "Hold for MIDI channel 13, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_14", "HOLD\nChannel\n14", "Hold for MIDI channel 14, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_15", "HOLD\nChannel\n15", "Hold for MIDI channel 15, release for default MIDI channel"),
+    K("MI_CHANNEL_HOLD_16", "HOLD\nChannel\n16", "Hold for MIDI channel 16, release for default MIDI channel"),
+]
+
+KEYCODES_MIDI_CHANNEL_OS = [
+    K("MI_CHANNEL_OS_1", "Next Key\nChannel\n1", "OSorary switch to MIDI channel 1"),
+    K("MI_CHANNEL_OS_2", "Next Key\nChannel\n2", "OSorary switch to MIDI channel 2"),
+    K("MI_CHANNEL_OS_3", "Next Key\nChannel\n3", "OSorary switch to MIDI channel 3"),
+    K("MI_CHANNEL_OS_4", "Next Key\nChannel\n4", "OSorary switch to MIDI channel 4"),
+    K("MI_CHANNEL_OS_5", "Next Key\nChannel\n5", "OSorary switch to MIDI channel 5"),
+    K("MI_CHANNEL_OS_6", "Next Key\nChannel\n6", "OSorary switch to MIDI channel 6"),
+    K("MI_CHANNEL_OS_7", "Next Key\nChannel\n7", "OSorary switch to MIDI channel 7"),
+    K("MI_CHANNEL_OS_8", "Next Key\nChannel\n8", "OSorary switch to MIDI channel 8"),
+    K("MI_CHANNEL_OS_9", "Next Key\nChannel\n9", "OSorary switch to MIDI channel 9"),
+    K("MI_CHANNEL_OS_10", "Next Key\nChannel\n10", "OSorary switch to MIDI channel 10"),
+    K("MI_CHANNEL_OS_11", "Next Key\nChannel\n11", "OSorary switch to MIDI channel 11"),
+    K("MI_CHANNEL_OS_12", "Next Key\nChannel\n12", "OSorary switch to MIDI channel 12"),
+    K("MI_CHANNEL_OS_13", "Next Key\nChannel\n13", "OSorary switch to MIDI channel 13"),
+    K("MI_CHANNEL_OS_14", "Next Key\nChannel\n14", "OSorary switch to MIDI channel 14"),
+    K("MI_CHANNEL_OS_15", "Next Key\nChannel\n15", "OSorary switch to MIDI channel 15"),
+    K("MI_CHANNEL_OS_16", "Next Key\nChannel\n16", "OSorary switch to MIDI channel 16"),
+]
+
+KEYCODES_MIDI_CHORD_1 = [
 K("MI_CHORD_0", "Major", "Major Chord"),
 K("MI_CHORD_1", "Minor", "Minor Chord"),
-K("MI_CHORD_2", "Dim\nᵒʳ\n°", "Diminished Chord"),
-K("MI_CHORD_3", "Aug\nᵒʳ\n+", "Aug Chord"),
+K("MI_CHORD_2", "Dim\nOr\n°", "Diminished Chord"),
+K("MI_CHORD_3", "Aug\nOr\n+", "Aug Chord"),
 K("MI_CHORD_4", "Sus2", "Sus2 Chord"),
 K("MI_CHORD_5", "Sus4", "Sus4 Chord"),
-K("MI_CHORD_6", "Major\n6", "Major 6 Chord"),
-K("MI_CHORD_7", "Minor\n6", "Minor 6 Chord"),
-K("MI_CHORD_8", "Maj7", "Maj7 Chord"),
-K("MI_CHORD_9", "min7", "min7 Chord"),
-K("MI_CHORD_10", "7\nᶜʰᵒʳᵈ", "7 Chord"),
-K("MI_CHORD_11", "Dim7\nᵒʳ\nb7b5", "Dim7 Chord"),
-K("MI_CHORD_12", "Half\nDim7\nᵒʳ\nm7b5", "Half Dim7 Chord"),
-K("MI_CHORD_13", "Aug7\nᵒʳ\n7#5", "Aug7 Chord"),
-K("MI_CHORD_14", "Maj9", "Maj9 Chord"),
-K("MI_CHORD_15", "min9", "min9 Chord"),
-K("MI_CHORD_16", "9\nᶜʰᵒʳᵈ", "9 Chord"),
+K("MI_CHORD_32", "Maj7\nno5", "Maj7no5 Chord"),
+K("MI_CHORD_33", "min7\nno5", "Min7no5 Chord"),
+K("MI_CHORD_34", "7\nno5", "7no5 Chord"),
+]
+
+KEYCODES_MIDI_CHORD_2 = [
 K("MI_CHORD_17", "Add2", "Add2 Chord"),
 K("MI_CHORD_18", "min\nAdd2", "mAdd2 Chord"),
 K("MI_CHORD_19", "Add4", "Add4 Chord"),
 K("MI_CHORD_20", "min\nAdd4", "mAdd4 Chord"),
+K("MI_CHORD_6", "Major\n6", "Major 6 Chord"),
+K("MI_CHORD_7", "Minor\n6", "Minor 6 Chord"),
+K("MI_CHORD_8", "Maj7", "Maj7 Chord"),
+K("MI_CHORD_9", "min7", "min7 Chord"),
+K("MI_CHORD_10", "7\nChord", "7 Chord"),
+K("MI_CHORD_11", "Dim7\nOr\nb7b5", "Dim7 Chord"),
+K("MI_CHORD_12", "Half\nDim7\nOr\nm7b5", "Half Dim7 Chord"),
+K("MI_CHORD_35", "Add9", "Add9 Chord"),
+K("MI_CHORD_36", "min\nAdd9", "minAdd9 Chord"),
+K("MI_CHORD_43", "Add11", "Add11 Chord"),
+K("MI_CHORD_44", "min\nAdd11", "minAdd11 Chord"),
+]
+
+KEYCODES_MIDI_CHORD_3 = [
 K("MI_CHORD_21", "6/9", "6/9 Chord"),
 K("MI_CHORD_22", "Minor\n6/9", "Minor 6/9 Chord"),
+K("MI_CHORD_14", "Maj9", "Maj9 Chord"),
+K("MI_CHORD_15", "min9", "min9 Chord"),
+K("MI_CHORD_16", "9\nChord", "9 Chord"),
+K("MI_CHORD_37", "Dim9\nOr\nb7b5(9)", "Dim9 Chord"),
+K("MI_CHORD_38", "Half\nDim9\nOr\nm7b5(9)", "Half Dim9 Chord"),
+K("MI_CHORD_39", "Aug9", "Aug9 Chord"),
+K("MI_CHORD_40", "Maj11", "Maj11 Chord"),
+K("MI_CHORD_41", "min11", "min11 Chord"),
+K("MI_CHORD_42", "11\nChord", "11 Chord"),
+]
+
+KEYCODES_MIDI_CHORD_4 = [
 K("MI_CHORD_23", "MinMaj7", "MinMaj7 Chord"),
 K("MI_CHORD_24", "Maj7\nSus4", "Maj7sus4 Chord"),
 K("MI_CHORD_25", "7\nSus4", "7sus4 Chord"),
@@ -962,52 +1360,43 @@ K("MI_CHORD_26", "Maj7\nSus2", "Maj7sus2 Chord"),
 K("MI_CHORD_27", "7\nSus2", "7sus2 Chord"),
 K("MI_CHORD_28", "Maj7\n#5", "Maj7#5 Chord"),
 K("MI_CHORD_29", "min7\n#5", "Min7#5 Chord"),
+K("MI_CHORD_13", "Aug7\nOr\n7#5", "Aug7 Chord"),
 K("MI_CHORD_30", "Maj7\nb5", "Maj7b5 Chord"),
 K("MI_CHORD_31", "7\nb5", "7b5 Chord"),
-K("MI_CHORD_32", "Maj7\nno5", "Maj7no5 Chord"),
-K("MI_CHORD_33", "min7\nno5", "Min7no5 Chord"),
-K("MI_CHORD_34", "7\nno5", "7no5 Chord"),
-K("MI_CHORD_35", "Add9", "Add9 Chord"),
-K("MI_CHORD_36", "min\nAdd9", "minAdd9 Chord"),
-K("MI_CHORD_37", "Dim9\nᵒʳ\nb7b5(9)", "Dim9 Chord"),
-K("MI_CHORD_38", "Half\nDim9\nᵒʳ\nm7b5(9)", "Half Dim9 Chord"),
-K("MI_CHORD_39", "Aug9", "Aug9 Chord"),
-K("MI_CHORD_40", "Maj11", "Maj11 Chord"),
-K("MI_CHORD_41", "min11", "min11 Chord"),
-K("MI_CHORD_42", "11\nᶜʰᵒʳᵈ", "11 Chord"),
-K("MI_CHORD_43", "Add11", "Add11 Chord"),
-K("MI_CHORD_44", "min\nAdd11", "minAdd11 Chord"),
 K("MI_CHORD_45", "Maj7\nAdd11", "Maj7Add11 Chord"),
 K("MI_CHORD_46", "min7\nAdd11", "min7Add11 Chord"),
 K("MI_CHORD_47", "7\nAdd11", "7Add11 Chord"),
-K("MI_CHORD_48", "Dim11\nᵒʳ\nb7b5(9/11)", "Dim11 Chord"),
-K("MI_CHORD_49", "Half\nDim11\nᵒʳ\nm7b5(9/11)", "HalfDim11 Chord"),
 K("MI_CHORD_50", "Maj7\n#11", "Maj7#11 Chord"),
 K("MI_CHORD_51", "min7\n#11", "min7#11 Chord"),
 K("MI_CHORD_52", "7\n#11", "7#11 Chord"),
-K("MI_CHORD_110", "Pentatonic", "Pentatonic"),
-K("MI_CHORD_111", "Minor\nPentatonic", "Minor Pentatonic"),
-K("MI_CHORD_100", "Major\nScale\nᵒʳ\nIonian", "Ionian/Major Scale"),
-K("MI_CHORD_105", "Minor\nScale\nᵒʳ\nIonian", "Aeolian Scale"),
+K("MI_CHORD_48", "Dim11\nOr\nb7b5(9/11)", "Dim11 Chord"),
+K("MI_CHORD_49", "Half\nDim11\nOr\nm7b5(9/11)", "HalfDim11 Chord"),
+]
+
+KEYCODES_MIDI_SCALES = [ 
+K("MI_CHORD_110", "Major Pentatonic", "Pentatonic"),
+K("MI_CHORD_111", "Minor Pentatonic", "Minor Pentatonic"),
+K("MI_CHORD_100", "Major Scale / Ionian", "Ionian/Major Scale"),
+K("MI_CHORD_105", "Minor Scale / Aeolian", "Aeolian Scale"),
 K("MI_CHORD_101", "Dorian", "Dorian Scale"),
 K("MI_CHORD_102", "Phrygian", "Phrygian Scale"),
 K("MI_CHORD_103", "Lydian", "Lydian Scale"),
 K("MI_CHORD_104", "Mixolydian", "Mixolydian Scale"),
 K("MI_CHORD_106", "Locrian", "Locrian Scale"),
-K("MI_CHORD_107", "Harmonic/nMinor", "Harmonic Minor"),
-K("MI_CHORD_108", "Melodic/nMinor", "Melodic Minor"),
-K("MI_CHORD_109", "Whole\nStep\nScale", "Whole Step Scale"),
+K("MI_CHORD_107", "Harmonic Minor", "Harmonic Minor"),
+K("MI_CHORD_108", "Melodic Minor", "Melodic Minor"),
+K("MI_CHORD_109", "Whole Step Scale", "Whole Step Scale"),
 ]
 
     
 KEYCODES_MIDI_INVERSION = [
- K ("MI_INVERSION_DEF", "Root \nᴾᵒˢᶦᵗᶦᵒⁿ", "Root Position"),
- K ("MI_INVERSION_1", "1st \nᴾᵒˢᶦᵗᶦᵒⁿ", "1st Inversion"),
- K ("MI_INVERSION_2", "2nd \nᴾᵒˢᶦᵗᶦᵒⁿ", "2nd Inversion"),
- K ("MI_INVERSION_3", "3rd\nᴾᵒˢᶦᵗᶦᵒⁿ", "3rd Inversion"),
- K ("MI_INVERSION_4", "4th \nᴾᵒˢᶦᵗᶦᵒⁿ", "4th Inversion"),
- K ("MI_INVERSION_5", "5th \nᴾᵒˢᶦᵗᶦᵒⁿ", "5th Inversion"),
- K ("MI_INVERSION_6", "6th \nᴾᵒˢᶦᵗᶦᵒⁿ", "6th Inversion"),
+ K ("MI_INVERSION_DEF", "Root \nPosition", "Root Position"),
+ K ("MI_INVERSION_1", "1st \nInversion", "1st Inversion"),
+ K ("MI_INVERSION_2", "2nd \nInversion", "2nd Inversion"),
+ K ("MI_INVERSION_3", "3rd \nInversion", "3rd Inversion"),
+ K ("MI_INVERSION_4", "4th \nInversion", "4th Inversion"),
+ K ("MI_INVERSION_5", "5th \nInversion", "5th Inversion"),
+ K ("MI_INVERSION_6", "6th \nInversion", "6th Inversion"),
 ]
 
 KEYCODES_HIDDEN = []
@@ -1019,17 +1408,19 @@ KEYCODES_MAP = dict()
 RAWCODES_MAP = dict()
 
 KEYCODES_MIDI_CC = []
+KEYCODES_MIDI_CC_UP = []
+KEYCODES_MIDI_CC_DOWN = []
 KEYCODES_MIDI_CC_FIXED = []
 
 for x in range (128):
     KEYCODES_MIDI_CC.append(K("MI_CC_{}_TOG".format(x),
-                              "CC{}\nᵗᵒᵍᵍˡᵉ".format(x),
+                              "CC{}\nOn/Off".format(x),
                               "Midi CC{} toggle".format(x)))
-    KEYCODES_MIDI_CC.append(K("MI_CC_{}_UP".format(x),
-                              "CC{}\nᵁᴾ".format(x),
+    KEYCODES_MIDI_CC_UP.append(K("MI_CC_{}_UP".format(x),
+                              "CC{}\n▲".format(x),
                               "Midi CC{} up".format(x)))
-    KEYCODES_MIDI_CC.append(K("MI_CC_{}_DWN".format(x),
-                              "CC{}\nᴰᴺ".format(x),
+    KEYCODES_MIDI_CC_DOWN.append(K("MI_CC_{}_DWN".format(x),
+                              "CC{}\n▼".format(x),
                               "Midi CC{} down".format(x)))
 
 
@@ -1045,42 +1436,37 @@ KEYCODES_MIDI_VELOCITY = []
 
 for x in range (128):
     KEYCODES_MIDI_VELOCITY.append(K("MI_VELOCITY_{}".format(x),
-                              "ᵛᵉˡᵒᶜⁱᵗʸ\n{}".format(x),
-                              "velocity {}".format(x)))
-
-KEYCODES_ENCODER_SENSITIVITY = []
-
-for x in range (1,17):
-    KEYCODES_ENCODER_SENSITIVITY.append(K("ENCODER_SENSITIVITY_{}".format(x),
-                              "ˢᵗᵉᵖ ˢᶦᶻᵉ\n+{}".format(x),
-                              "Step size {}".format(x)))
-
+                              "Velocity\n{}".format(x),
+                              "Velocity {}".format(x)))
 
 KEYCODES_MIDI_BANK = []
+KEYCODES_MIDI_BANK_MSB = []
+KEYCODES_MIDI_BANK_LSB = []
 KEYCODES_Program_Change = []
+KEYCODES_Program_Change_UPDOWN = []
 
 KEYCODES_MIDI_BANK.append(K("MI_BANK_UP",
-                            "UP\nᵇᵃⁿᵏ",
+                            "Bank\nUp",
                             "Bank up"))
 KEYCODES_MIDI_BANK.append(K("MI_BANK_DWN",
-                            "DOWN\nᵇᵃⁿᵏ",
+                            "Bank\nDown",
                             "Bank down"))
-KEYCODES_Program_Change.append(K("MI_PROG_UP",
-                            "UP\nᵖʳᵒᵍʳᵃᵐ",
+KEYCODES_Program_Change_UPDOWN.append(K("MI_PROG_UP",
+                            "Program\nUp",
                             "Program up"))
-KEYCODES_Program_Change.append(K("MI_PROG_DWN",
-                            "DOWN\nᵖʳᵒᵍʳᵃᵐ",
+KEYCODES_Program_Change_UPDOWN.append(K("MI_PROG_DWN",
+                            "Program\nDown",
                             "Program down"))
 
 for x in range(128):
-    KEYCODES_MIDI_BANK.append(K("MI_BANK_MSB_{}".format(x),
-                              "MSB{}\nᵇᵃⁿᵏ".format(x),
+    KEYCODES_MIDI_BANK_MSB.append(K("MI_BANK_MSB_{}".format(x),
+                              "Bank\nMSB\n{}".format(x),
                               "Bank select MSB {}".format(x)))
-    KEYCODES_MIDI_BANK.append(K("MI_BANK_LSB_{}".format(x),
-                              "LSB{}\nᵇᵃⁿᵏ".format(x),
+    KEYCODES_MIDI_BANK_LSB.append(K("MI_BANK_LSB_{}".format(x),
+                              "Bank\nLSB\n{}".format(x),
                               "Bank select LSB {}".format(x)))
     KEYCODES_Program_Change.append(K("MI_PROG_{}".format(x),
-                              "ᵖʳᵒᵍʳᵃᵐ\n{}".format(x),
+                              "Program\n{}".format(x),
                               "Program change {}".format(x)))
 
 
@@ -1091,12 +1477,12 @@ def recreate_keycodes():
     """ Regenerates global KEYCODES array """
 
     KEYCODES.clear()
-    KEYCODES.extend(KEYCODES_SPECIAL + KEYCODES_BASIC + KEYCODES_SHIFTED + KEYCODES_ISO + KEYCODES_LAYERS +
-                    KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM + KEYCODES_BACKLIGHT + KEYCODES_MEDIA +
-                    KEYCODES_TAP_DANCE + KEYCODES_MACRO + KEYCODES_USER + KEYCODES_HIDDEN + KEYCODES_MIDI+
-                    KEYCODES_MIDI_CC_FIXED+KEYCODES_MIDI_CC+KEYCODES_MIDI_BANK+KEYCODES_Program_Change+
-                    KEYCODES_MIDI_VELOCITY+KEYCODES_ENCODER_SENSITIVITY+KEYCODES_MIDI_CHANNEL+KEYCODES_MIDI_TRANSPOSITION+
-                    KEYCODES_MIDI_VELOCITYENCODER+KEYCODES_MIDI_CHORD+KEYCODES_MIDI_INVERSION)
+    KEYCODES.extend(KEYCODES_SPECIAL + KEYCODES_BASIC + KEYCODES_SHIFTED + KEYCODES_ISO + KEYCODES_LAYERS + KEYCODES_LAYERS_DF + KEYCODES_LAYERS_MO + KEYCODES_LAYERS_TG + KEYCODES_LAYERS_TT + KEYCODES_LAYERS_OSL + KEYCODES_LAYERS_TO + KEYCODES_LAYERS_LT +
+                    KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM + KEYCODES_BACKLIGHT + KEYCODES_MEDIA + KEYCODES_OLED +
+                    KEYCODES_TAP_DANCE + KEYCODES_MACRO + KEYCODES_MACRO_BASE + KEYCODES_USER + KEYCODES_HIDDEN + KEYCODES_MIDI+ KEYCODES_MIDI_CHANNEL_OS + KEYCODES_MIDI_CHANNEL_HOLD + 
+                    KEYCODES_MIDI_CC_FIXED+KEYCODES_MIDI_CC+KEYCODES_MIDI_CC_DOWN+KEYCODES_MIDI_CC_UP+KEYCODES_MIDI_BANK+KEYCODES_Program_Change+KEYCODES_MIDI_SMARTCHORDBUTTONS+KEYCODES_VELOCITY_STEPSIZE+
+                    KEYCODES_MIDI_VELOCITY+KEYCODES_CC_STEPSIZE+KEYCODES_MIDI_CHANNEL+KEYCODES_MIDI_UPDOWN+KEYCODES_MIDI_CHORD_1+KEYCODES_MIDI_CHORD_2+KEYCODES_MIDI_CHORD_3+KEYCODES_MIDI_CHORD_4+
+                    KEYCODES_MIDI_INVERSION+KEYCODES_MIDI_SCALES+KEYCODES_MIDI_OCTAVE+KEYCODES_MIDI_KEY+KEYCODES_Program_Change_UPDOWN+KEYCODES_MIDI_BANK_LSB+KEYCODES_MIDI_BANK_MSB+KEYCODES_MIDI_PEDAL+KEYCODES_MIDI_ADVANCED)
     KEYCODES_MAP.clear()
     RAWCODES_MAP.clear()
     for keycode in KEYCODES:
@@ -1159,27 +1545,9 @@ def recreate_keyboard_keycodes(keyboard):
         KEYCODES_LAYERS.append(Keycode("FN_MO13", "Fn1\n(Fn3)"))
         KEYCODES_LAYERS.append(Keycode("FN_MO23", "Fn2\n(Fn3)"))
 
-    KEYCODES_LAYERS.extend(
-        generate_keycodes_for_mask("MO",
-                                   "Momentarily turn on layer when pressed (requires KC_TRNS on destination layer)"))
-    KEYCODES_LAYERS.extend(
-        generate_keycodes_for_mask("DF",
-                                   "Set the base (default) layer"))
-    KEYCODES_LAYERS.extend(
-        generate_keycodes_for_mask("TG",
-                                   "Toggle layer on or off"))
-    KEYCODES_LAYERS.extend(
-        generate_keycodes_for_mask("TT",
-                                   "Normally acts like MO unless it's tapped multiple times, which toggles layer on"))
-    KEYCODES_LAYERS.extend(
-        generate_keycodes_for_mask("OSL",
-                                   "Momentarily activates layer until a key is pressed"))
-    KEYCODES_LAYERS.extend(
-        generate_keycodes_for_mask("TO",
-                                   "Turns on layer and turns off all other layers, except the default layer"))
 
     for x in range(layers):
-        KEYCODES_LAYERS.append(Keycode("LT{}(kc)".format(x), "LT {}\n(kc)".format(x),
+        KEYCODES_LAYERS_LT.append(Keycode("LT{}(kc)".format(x), "LT {}\n(kc)".format(x),
                                        "kc on tap, switch to layer {} while held".format(x), masked=True))
 
     KEYCODES_MACRO.clear()
@@ -1187,8 +1555,6 @@ def recreate_keyboard_keycodes(keyboard):
         lbl = "M{}".format(x)
         KEYCODES_MACRO.append(Keycode(lbl, lbl))
 
-    for x, kc in enumerate(KEYCODES_MACRO_BASE):
-        KEYCODES_MACRO.append(kc)
 
     KEYCODES_TAP_DANCE.clear()
     for x in range(keyboard.tap_dance_count):
