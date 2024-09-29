@@ -153,15 +153,6 @@ class MainWindow(QMainWindow):
         layout_save_act.setShortcut("Ctrl+S")
         layout_save_act.triggered.connect(self.on_layout_save)
 
-        sideload_json_act = QAction(tr("MenuFile", "Sideload VIA JSON..."), self)
-        sideload_json_act.triggered.connect(self.on_sideload_json)
-
-        download_via_stack_act = QAction(tr("MenuFile", "Download VIA definitions"), self)
-        download_via_stack_act.triggered.connect(self.load_via_stack_json)
-
-        load_dummy_act = QAction(tr("MenuFile", "Load dummy JSON..."), self)
-        load_dummy_act.triggered.connect(self.on_load_dummy)
-
         exit_act = QAction(tr("MenuFile", "Exit"), self)
         exit_act.setShortcut("Ctrl+Q")
         exit_act.triggered.connect(self.close)
@@ -184,10 +175,6 @@ class MainWindow(QMainWindow):
         keyboard_lock_act = QAction(tr("MenuSecurity", "Lock"), self)
         keyboard_lock_act.setShortcut("Ctrl+L")
         keyboard_lock_act.triggered.connect(self.lock_keyboard)
-
-        keyboard_reset_act = QAction(tr("MenuSecurity", "Reboot to bootloader"), self)
-        keyboard_reset_act.setShortcut("Ctrl+B")
-        keyboard_reset_act.triggered.connect(self.reboot_to_bootloader)
 
         keyboard_layout_menu = self.menuBar().addMenu(tr("Menu", "Keyboard layout"))
         keymap_group = QActionGroup(self)
@@ -410,10 +397,10 @@ class MainWindow(QMainWindow):
         self.current_tab = new_tab
 
     def about_vial(self):
-        title = "About Vial"
-        text = 'Vial {}<br><br>Python {}<br>Qt {}<br><br>' \
+        title = "About SwitchStation"
+        text = 'SwitchStation<br><br>Python {}<br>Qt {}<br><br>' \
                'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
-               '<a href="https://get.vial.today/">https://get.vial.today/</a>' \
+               '<a href="https://www.MIDIswitch.com">https://www.MIDIswitch.com</a>' \
                .format(qApp.applicationVersion(),
                        platform.python_version(), QT_VERSION_STR)
 
