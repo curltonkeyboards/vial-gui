@@ -380,12 +380,13 @@ class MainWindow(QMainWindow):
 
     def about_vial(self):
         title = "About SwitchStation"
-        text = 'SwitchStation ver 1.2<br><br>Python {}<br>Qt {}<br><br>' \
-               'SwitchStation is only made possible with the<br>work provided by all the amazing contributers to<br>Vial an opensource project <br><br>Python {}<br>Qt {}<br><br>' \
-               'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
-               '<a href="https://www.MIDIswitch.com">https://www.MIDIswitch.com</a>' \
-               .format(qApp.applicationVersion(),
-                       platform.python_version(), QT_VERSION_STR)
+        text = 'SwitchStation ver {}<br>Python {}<br>Qt {}<br>' \
+                'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
+                '<a href="https://www.MIDIswitch.com">https://www.MIDIswitch.com</a><br>' \
+                'Only made possible by all<br>the amazing contributors to Vial<br>' \
+                .format(qApp.applicationVersion(), platform.python_version(), QT_VERSION_STR)
+    
+
 
         if sys.platform == "emscripten":
             self.msg_about = QMessageBox()
