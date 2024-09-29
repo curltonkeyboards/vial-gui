@@ -382,8 +382,8 @@ class MainWindow(QMainWindow):
         title = "About SwitchStation"
         text = 'SwitchStation ver {}<br>Python {}<br>Qt {}<br>' \
                 'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
-                '<a href="https://www.MIDIswitch.com">https://www.MIDIswitch.com</a><br>' \
-                'Only made possible by all<br>the amazing contributors to Vial<br>' \
+                '<a href="https://www.MIDIswitch.com">https://www.MIDIswitch.com</a><br><br><br>' \
+                'Only made possible by all the amazing<br>contributors to Vial<br>' \
                 .format(qApp.applicationVersion(), platform.python_version(), QT_VERSION_STR)
     
 
