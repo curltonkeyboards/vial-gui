@@ -14,5 +14,6 @@ keymap = {
     "KC_SCOLON": "+\n;",
     "KC_QUOTE": "*\n:",
     "KC_NONUS_HASH": "}\n]",
-    "KC_GRAVE": "HAN/\nZEN"
+    "KC_GRAVE": "HAN/\nZEN",
+    "KC_KP_DOT": ","
 }
