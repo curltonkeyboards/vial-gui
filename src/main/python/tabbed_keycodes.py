@@ -1243,7 +1243,7 @@ class FilteredTabbedKeycodes(QTabWidget):
                 (None, KEYCODES_ISO),
             ], prefix_buttons=[("Any", -1)]),                     
             Tab(self, "Keyboard Advanced", [(mods, (KEYCODES_BOOT + KEYCODES_QUANTUM)),
-                                  (mods_narrow, (KEYCODES_BOOT),
+                                  (mods_narrow, (KEYCODES_BOOT)),
                                   (None, (KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM))]),
             SimpleTab(self, "App, Media and Mouse", KEYCODES_MEDIA),
             SimpleTab(self, "Lighting", KEYCODES_BACKLIGHT),
