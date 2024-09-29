@@ -162,7 +162,6 @@ class MainWindow(QMainWindow):
             file_menu.addAction(layout_load_act)
             file_menu.addAction(layout_save_act)
             file_menu.addSeparator()
-            file_menu.addAction(sideload_json_act)
             file_menu.addAction(download_via_stack_act)
             file_menu.addAction(load_dummy_act)
             file_menu.addSeparator()
@@ -318,16 +317,6 @@ class MainWindow(QMainWindow):
         # write to cache
         with open(os.path.join(self.cache_path, "via_keyboards.json"), "wb") as cf:
             cf.write(data)
-
-    def on_sideload_json(self):
-        dialog = QFileDialog()
-        dialog.setDefaultSuffix("json")
-        dialog.setAcceptMode(QFileDialog.AcceptOpen)
-        dialog.setNameFilters(["VIA layout JSON (*.json)"])
-        if dialog.exec_() == QDialog.Accepted:
-            with open(dialog.selectedFiles()[0], "rb") as inf:
-                data = inf.read()
-            self.autorefresh.sideload_via_json(data)
 
     def on_load_dummy(self):
         dialog = QFileDialog()
