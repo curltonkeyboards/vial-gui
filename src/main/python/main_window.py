@@ -190,8 +190,6 @@ class MainWindow(QMainWindow):
         self.security_menu = self.menuBar().addMenu(tr("Menu", "Security"))
         self.security_menu.addAction(keyboard_unlock_act)
         self.security_menu.addAction(keyboard_lock_act)
-        self.security_menu.addSeparator()
-        self.security_menu.addAction(keyboard_reset_act)
 
         if sys.platform != "emscripten":
             self.theme_menu = self.menuBar().addMenu(tr("Menu", "Theme"))
@@ -337,11 +335,6 @@ class MainWindow(QMainWindow):
     def lock_keyboard(self):
         if isinstance(self.autorefresh.current_device, VialKeyboard):
             self.autorefresh.current_device.keyboard.lock()
-
-    def reboot_to_bootloader(self):
-        if isinstance(self.autorefresh.current_device, VialKeyboard):
-            Unlocker.unlock(self.autorefresh.current_device.keyboard)
-            self.autorefresh.current_device.keyboard.reset()
 
     def change_keyboard_layout(self, index):
         self.settings.setValue("keymap", KEYMAPS[index][0])
