@@ -161,7 +161,6 @@ class MainWindow(QMainWindow):
             file_menu = self.menuBar().addMenu(tr("Menu", "File"))
             file_menu.addAction(layout_load_act)
             file_menu.addAction(layout_save_act)
-            file_menu.addAction(exit_act)
 
         keyboard_unlock_act = QAction(tr("MenuSecurity", "Unlock"), self)
         keyboard_unlock_act.setShortcut("Ctrl+U")
@@ -206,7 +205,7 @@ class MainWindow(QMainWindow):
             if theme_group.checkedAction() is None:
                 theme_group.actions()[0].setChecked(True)
 
-        about_vial_act = QAction(tr("MenuAbout", "About Vial..."), self)
+        about_vial_act = QAction(tr("MenuAbout", "About SwitchStation..."), self)
         about_vial_act.triggered.connect(self.about_vial)
         self.about_keyboard_act = QAction("", self)
         self.about_keyboard_act.triggered.connect(self.about_keyboard)
@@ -302,6 +301,16 @@ class MainWindow(QMainWindow):
             c = EditorContainer(container)
             self.tabs.addTab(c, tr("MainWindow", lbl))
 
+    def load_via_stack_json(self):
+        from urllib.request import urlopen
+
+        with urlopen("https://github.com/vial-kb/via-keymap-precompiled/raw/main/via_keyboard_stack.json") as resp:
+            data = resp.read()
+        self.autorefresh.load_via_stack(data)
+        # write to cache
+        with open(os.path.join(self.cache_path, "via_keyboards.json"), "wb") as cf:
+            cf.write(data)
+
     def on_load_dummy(self):
         dialog = QFileDialog()
         dialog.setDefaultSuffix("json")
@@ -336,6 +345,11 @@ class MainWindow(QMainWindow):
         if isinstance(self.autorefresh.current_device, VialKeyboard):
             self.autorefresh.current_device.keyboard.lock()
 
+    def reboot_to_bootloader(self):
+        if isinstance(self.autorefresh.current_device, VialKeyboard):
+            Unlocker.unlock(self.autorefresh.current_device.keyboard)
+            self.autorefresh.current_device.keyboard.reset()
+
     def change_keyboard_layout(self, index):
         self.settings.setValue("keymap", KEYMAPS[index][0])
         KeycodeDisplay.set_keymap_override(KEYMAPS[index][1])
@@ -366,7 +380,8 @@ class MainWindow(QMainWindow):
 
     def about_vial(self):
         title = "About SwitchStation"
-        text = 'SwitchStation<br><br>Python {}<br>Qt {}<br><br>' \
+        text = 'SwitchStation ver 1.2<br><br>Python {}<br>Qt {}<br><br>' \
+               'SwitchStation is only made possible with the<br>work provided by all the amazing contributers to Vial<br>https://get.vial.today <br><br>Python {}<br>Qt {}<br><br>' \
                'Licensed under the terms of the<br>GNU General Public License (version 2 or later)<br><br>' \
                '<a href="https://www.MIDIswitch.com">https://www.MIDIswitch.com</a>' \
                .format(qApp.applicationVersion(),
