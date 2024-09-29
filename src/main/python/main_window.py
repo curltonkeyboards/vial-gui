@@ -161,10 +161,6 @@ class MainWindow(QMainWindow):
             file_menu = self.menuBar().addMenu(tr("Menu", "File"))
             file_menu.addAction(layout_load_act)
             file_menu.addAction(layout_save_act)
-            file_menu.addSeparator()
-            file_menu.addAction(download_via_stack_act)
-            file_menu.addAction(load_dummy_act)
-            file_menu.addSeparator()
             file_menu.addAction(exit_act)
 
         keyboard_unlock_act = QAction(tr("MenuSecurity", "Unlock"), self)
@@ -307,16 +303,6 @@ class MainWindow(QMainWindow):
 
             c = EditorContainer(container)
             self.tabs.addTab(c, tr("MainWindow", lbl))
-
-    def load_via_stack_json(self):
-        from urllib.request import urlopen
-
-        with urlopen("https://github.com/vial-kb/via-keymap-precompiled/raw/main/via_keyboard_stack.json") as resp:
-            data = resp.read()
-        self.autorefresh.load_via_stack(data)
-        # write to cache
-        with open(os.path.join(self.cache_path, "via_keyboards.json"), "wb") as cf:
-            cf.write(data)
 
     def on_load_dummy(self):
         dialog = QFileDialog()
