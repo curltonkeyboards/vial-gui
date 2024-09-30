@@ -1006,7 +1006,7 @@ class MacroTab(QScrollArea):
 
 
         # Layout for inversion buttons
-        self.button_layout = QHBoxLayout()
+        self.button_layout = QVBoxLayout()
         self.main_layout.addLayout(self.button_layout)
 
         # Populate the inversion buttons
