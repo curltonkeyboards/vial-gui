@@ -996,10 +996,10 @@ class MacroTab(QScrollArea):
         self.main_layout = QHBoxLayout()
 
         # 1. SmartChord Header and Dropdown
-        self.add_header_dropdown("Macros", self.macro_keycodes)
+        self.add_header_dropdown("Macro Selection", self.macro_keycodes)
 
         # 2. Scales/Modes Header and Dropdown
-        self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
+        self.add_header_dropdown("Tapdance Selection", self.tapdance_keycodes)
 
         # 3. Inversions Header
         self.base_macro_label = QLabel("Macro Recording")
@@ -1025,8 +1025,8 @@ class MacroTab(QScrollArea):
         header_label.setAlignment(Qt.AlignCenter)
 
         # Create dropdown
-        dropdown = QComboBox()
-        dropdown.setFixedWidth(300)
+        dropdown = CenteredComboBox()
+        dropdown.setFixedWidth(400)
         dropdown.setFixedHeight(40)
         dropdown.addItem(f"{header_text}")  # Placeholder item
         dropdown.model().item(0).setEnabled(False)
