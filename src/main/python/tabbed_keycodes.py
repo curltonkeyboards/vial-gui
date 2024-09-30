@@ -998,12 +998,14 @@ class MacroTab(QScrollArea):
         self.main_layout = QHBoxLayout()
 
         # Set spacing between widgets to be minimal
-        self.main_layout.setSpacing(10)  # You can adjust this value for desired spacing
-        self.main_layout.setContentsMargins(0, 0, 0, 0)  # No margin between widgets and the edges
+        self.main_layout.setSpacing(10)  # Adjust this value for desired spacing
+        self.main_layout.setContentsMargins(0, 0, 0, 0)  # Set margins to zero to avoid extra space
 
-        # 1. Add dropdowns and buttons in the same row (inside the same QHBoxLayout)
+        # Add the dropdowns in the same row as the buttons
+        self.dropdown_layout = QVBoxLayout()  # A layout for dropdowns
         self.add_header_dropdown("Macros", self.macro_keycodes)
         self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
+        self.main_layout.addLayout(self.dropdown_layout)  # Add dropdown layout to the main layout
 
         # 2. Inversions Header (with buttons)
         self.base_macro_label = QLabel("Macro Recording")
@@ -1020,14 +1022,14 @@ class MacroTab(QScrollArea):
         # Add the horizontal layout (main_layout) to the vertical layout (main_vlayout)
         main_vlayout.addLayout(self.main_layout)
 
-        # Add a stretch to push everything to the top
+        # Add a stretch to push everything to the top (optional)
         main_vlayout.addStretch()
 
     def add_header_dropdown(self, header_text, keycodes):
         """Helper method to add a header and dropdown."""
         # Create header
         header_label = QLabel(header_text)
-        header_label.setAlignment(Qt.AlignCenter)
+        header_label.setAlignment(Qt.AlignLeft)
 
         # Create dropdown
         dropdown = QComboBox()
@@ -1035,12 +1037,19 @@ class MacroTab(QScrollArea):
         dropdown.setFixedHeight(40)
         dropdown.addItem(f"{header_text}")  # Placeholder item
         dropdown.model().item(0).setEnabled(False)
+
+        # Add keycodes to the dropdown
         for keycode in keycodes:
             dropdown.addItem(Keycode.label(keycode.qmk_id), keycode.qmk_id)
+        
+        # Connect signals
         dropdown.currentIndexChanged.connect(self.on_selection_change)
         dropdown.currentIndexChanged.connect(lambda: self.reset_dropdown(dropdown, header_text))
-        self.main_layout.addWidget(dropdown)
-        
+
+        # Add header and dropdown to the dropdown_layout
+        self.dropdown_layout.addWidget(header_label)
+        self.dropdown_layout.addWidget(dropdown)
+
     def reset_dropdown(self, dropdown, header_text):
         """Reset the dropdown to show default text while storing the selected value."""
         selected_index = dropdown.currentIndex()
@@ -1087,6 +1096,7 @@ class MacroTab(QScrollArea):
     def has_buttons(self):
         """Check if there are buttons or dropdown items."""
         return (self.button_layout.count() > 0)
+
 
 
 
