@@ -1055,7 +1055,9 @@ class MacroTab(QScrollArea):
                 widget.deleteLater()
         
         self.button_layout.setAlignment(Qt.AlignLeft)
-
+        # Populate inversion buttons
+        row = 0
+        col = 0
         for keycode in self.base_macro_keycodes:
             if keycode_filter is None or keycode_filter(keycode.qmk_id):
                 btn = SquareButton()
