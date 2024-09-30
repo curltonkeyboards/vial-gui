@@ -1035,7 +1035,8 @@ class MacroTab(QScrollArea):
         dropdown.currentIndexChanged.connect(lambda: self.reset_dropdown(dropdown, header_text))
 
         # Add dropdown to the main horizontal layout
-        self.main_layout.addWidget(dropdown)
+        self.dropdown_layout.addWidget(header_label)
+        self.dropdown_layout.addWidget(dropdown)
 
     def reset_dropdown(self, dropdown, header_text):
         """Reset the dropdown to show default text while storing the selected value."""
@@ -1059,7 +1060,7 @@ class MacroTab(QScrollArea):
                 btn.setText(Keycode.label(keycode.qmk_id))
                 btn.clicked.connect(lambda _, k=keycode.qmk_id: self.keycode_changed.emit(k))
                 btn.keycode = keycode  # Make sure keycode attribute is set
-                self.main_layout.addWidget(btn)  # Add button directly to main layout
+                self.button_layout.addWidget(btn)  # Add button directly to main layout
 
     def on_selection_change(self, index):
         selected_qmk_id = self.sender().itemData(index)
