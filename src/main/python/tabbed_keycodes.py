@@ -997,9 +997,17 @@ class MacroTab(QScrollArea):
         
         # 2. Scales/Modes Header and Dropdown
         self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
-        
-        # 2. Scales/Modes Header and Dropdown
-        self.add_header_dropdown("Macro Recordin Options", self. base_macro_keycodes)     
+
+        # 3. Inversions Header
+        self.base_macro_label = QLabel("Macro Recording")
+        self.main_layout.addWidget(self.base_macro_label)
+
+        # Layout for buttons (Inversions)
+        self.button_layout = QHBoxLayout()
+        self.main_layout.addLayout(self.button_layout)
+
+        # Populate the inversion buttons
+        self.recreate_buttons()  # Call without arguments initially
 
         # 4. Spacer to push everything to the top
         self.main_layout.addStretch()
