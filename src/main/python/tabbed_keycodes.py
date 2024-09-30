@@ -1000,13 +1000,13 @@ class MacroTab(QScrollArea):
         self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
         
                 # Inversions Header
-        self.base_macro_label = QLabel("Function Buttons")
+        self.base_macro_label = QLabel("Macro Recording")
         self.base_macro_label.setAlignment(Qt.AlignLeft)  # Center the label text
         self.main_layout.addWidget(self.base_macro_label, alignment=Qt.AlignLeft)  # Add to layout with center alignment
 
 
         # Layout for inversion buttons
-        self.button_layout = QGridLayout()
+        self.button_layout = QHBoxLayout()
         self.main_layout.addLayout(self.button_layout)
 
         # Populate the inversion buttons
