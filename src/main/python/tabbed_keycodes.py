@@ -1048,7 +1048,7 @@ class MacroTab(QScrollArea):
             if widget is not None:
                 widget.deleteLater()
                 
-        for opt in [self.all_keycodes, self.basic_keycodes]:
+        for opt in [self.base_macro_keycodes]:
             opt.clear_buttons()  # Assuming clear_buttons() clears the existing buttons
             opt.recreate_keycode_buttons()
 
