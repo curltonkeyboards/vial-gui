@@ -1054,7 +1054,7 @@ class MacroTab(QScrollArea):
             if widget is not None:
                 widget.deleteLater()
         
-        self.button_layout.setAlignment(Qt.AlignLeft)
+        
         # Populate inversion buttons
         row = 0
         col = 0
@@ -1075,7 +1075,7 @@ class MacroTab(QScrollArea):
                 if col >= 15:  # Adjust the number of columns as needed
                     col = 0
                     row += 1
-
+        self.button_layout.setAlignment(Qt.AlignLeft)
     def on_selection_change(self, index):
         selected_qmk_id = self.sender().itemData(index)
         if selected_qmk_id:
