@@ -984,96 +984,100 @@ class MacroTab(QScrollArea):
         self.tapdance_keycodes = tapdance_keycodes
         self.base_macro_keycodes = base_macro_keycodes
 
-        # Main widget to hold everything
+        # Create a main content widget to put inside the scroll area
         content_widget = QWidget()
         self.setWidget(content_widget)
         self.setWidgetResizable(True)
 
-        # Main vertical layout to control alignment and stretching
+        # Main layout inside the content widget (QVBoxLayout to align at the top)
         main_vlayout = QVBoxLayout(content_widget)
 
-        # Horizontal layout for the actual content (dropdowns, buttons)
-        self.main_layout = QHBoxLayout()
+        # Inner horizontal layout (for dropdowns and buttons combined)
+        combined_layout = QHBoxLayout()
 
-        # Add dropdowns and buttons
+        # Layout for dropdowns
+        self.dropdown_layout = QVBoxLayout()
+        self.dropdown_layout.setSpacing(5)  # Adjust the spacing between dropdowns
+        self.dropdown_layout.setContentsMargins(0, 0, 0, 0)  # Minimal margins
+        combined_layout.addLayout(self.dropdown_layout)
+
+        # 1. Add dropdowns
         self.add_header_dropdown("Macros", self.macro_keycodes)
         self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
 
-        # Inversions Header
+        # 2. Inversions Header (with buttons)
         self.base_macro_label = QLabel("Macro Recording")
-        self.main_layout.addWidget(self.base_macro_label)
+        self.dropdown_layout.addWidget(self.base_macro_label)
 
-        # Button layout for inversion buttons
-        self.button_layout = QHBoxLayout()  # Horizontal layout for buttons
-        self.main_layout.addLayout(self.button_layout)  # Add button layout to main layout
+        # Layout for buttons (Inversions)
+        self.button_layout = QHBoxLayout()
+        self.button_layout.setSpacing(5)  # Adjust the spacing between buttons
+        self.button_layout.setContentsMargins(0, 0, 0, 0)  # Minimal margins
+        combined_layout.addLayout(self.button_layout)
 
-        # Add the horizontal main layout to the vertical layout
-        main_vlayout.addLayout(self.main_layout)
+        # Populate the inversion buttons
+        self.recreate_buttons()
+
+        # Add the combined horizontal layout (with dropdowns and buttons) to the vertical layout (main_vlayout)
+        main_vlayout.addLayout(combined_layout)
 
         # Add a stretch to push everything to the top
         main_vlayout.addStretch()
 
-        # Populate the inversion buttons
-        self.recreate_buttons()  # Call without arguments initially
-
     def add_header_dropdown(self, header_text, keycodes):
         """Helper method to add a header and dropdown."""
+        # Create header
+        header_label = QLabel(header_text)
+        header_label.setAlignment(Qt.AlignCenter)
+
+        # Create dropdown
         dropdown = QComboBox()
-        dropdown.setFixedWidth(300)  # Width stays at 300
-        dropdown.setFixedHeight(40)  # Height set to 40 pixels
+        dropdown.setFixedWidth(300)
+        dropdown.setFixedHeight(40)
         dropdown.addItem(f"{header_text}")  # Placeholder item
-        dropdown.model().item(0).setEnabled(False)  # Disable the placeholder
+        dropdown.model().item(0).setEnabled(False)
         for keycode in keycodes:
             dropdown.addItem(Keycode.label(keycode.qmk_id), keycode.qmk_id)
         dropdown.currentIndexChanged.connect(self.on_selection_change)
         dropdown.currentIndexChanged.connect(lambda: self.reset_dropdown(dropdown, header_text))
-        self.main_layout.addWidget(dropdown)  # Add dropdown to main layout
+        self.dropdown_layout.addWidget(dropdown)
 
     def reset_dropdown(self, dropdown, header_text):
         """Reset the dropdown to show default text while storing the selected value."""
         selected_index = dropdown.currentIndex()
+
         if selected_index > 0:  # Ensure an actual selection was made
             selected_value = dropdown.itemData(selected_index)  # Get the selected keycode value
-            # Process the selected value if necessary
+            # Process the selected value if necessary here
 
         # Reset the visible text to the default
         dropdown.setCurrentIndex(0)
 
     def recreate_buttons(self, keycode_filter=None):
-        """Recreate the inversion buttons."""
-        # Clear previous buttons
+        # Clear previous widgets
         for i in reversed(range(self.button_layout.count())):
             widget = self.button_layout.itemAt(i).widget()
             if widget is not None:
                 widget.deleteLater()
 
-        # Add new buttons for base_macro_keycodes
+        # Populate inversion buttons
         for keycode in self.base_macro_keycodes:
             if keycode_filter is None or keycode_filter(keycode.qmk_id):
-                # Create a new SquareButton for each keycode
                 btn = SquareButton()
-                btn.setFixedWidth(40)  # Fixed width for buttons
+                btn.setFixedWidth(40)  # Set a fixed width for buttons
                 btn.setRelSize(KEYCODE_BTN_RATIO)
                 btn.setText(Keycode.label(keycode.qmk_id))
-                
-                # Emit signal when button is clicked
                 btn.clicked.connect(lambda _, k=keycode.qmk_id: self.keycode_changed.emit(k))
-                btn.keycode = keycode  # Store the keycode in the button
-
-                # Debugging print statement to track button creation
-                print(f"Creating button for keycode: {keycode.qmk_id}")
-
-                # Add the button to the button layout
+                btn.keycode = keycode  # Make sure keycode attribute is set
                 self.button_layout.addWidget(btn)
 
     def on_selection_change(self, index):
-        """Handle dropdown selection change."""
         selected_qmk_id = self.sender().itemData(index)
         if selected_qmk_id:
             self.keycode_changed.emit(selected_qmk_id)
 
     def relabel_buttons(self):
-        """Relabel buttons with updated keycodes."""
+        # Handle relabeling only for buttons
         for i in range(self.button_layout.count()):
             widget = self.button_layout.itemAt(i).widget()
             if isinstance(widget, SquareButton):
@@ -1083,7 +1087,7 @@ class MacroTab(QScrollArea):
 
     def has_buttons(self):
         """Check if there are buttons or dropdown items."""
-        return self.button_layout.count() > 0
+        return (self.button_layout.count() > 0)
 
 
 class midiTab(QScrollArea):
