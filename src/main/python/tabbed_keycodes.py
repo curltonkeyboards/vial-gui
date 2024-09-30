@@ -800,7 +800,7 @@ class midiadvancedTab(QScrollArea):
 class LayerTab(QScrollArea):
     keycode_changed = pyqtSignal(str)
 
-    def __init__(self, parent, label, inversion_keycodes, smartchord_CC_toggle, smartchord_program_change, smartchord_LSB, smartchord_MSB, smartchord_LSB2, smartchord_MSB2, smartchord_CC_toggle2):
+    def __init__(self, parent, label, inversion_keycodes, smartchord_CC_toggle, smartchord_program_change, smartchord_LSB, smartchord_MSB, smartchord_LSB2, smartchord_CC_toggle2):
         super().__init__(parent)
         self.label = label     
         self.inversion_keycodes = inversion_keycodes
@@ -809,7 +809,6 @@ class LayerTab(QScrollArea):
         self.smartchord_MSB = smartchord_MSB
         self.smartchord_CC_toggle = smartchord_CC_toggle
         self.smartchord_LSB2 = smartchord_LSB2
-        self.smartchord_MSB2 = smartchord_MSB2
         self.smartchord_CC_toggle2 = smartchord_CC_toggle2
 
         # Create a widget for the scroll area content
@@ -842,7 +841,6 @@ class LayerTab(QScrollArea):
         self.add_header_dropdown("Toggle Layer", self.smartchord_LSB, self.additional_dropdown_layout2)
         self.add_header_dropdown("Tap-Toggle Layer", self.smartchord_MSB, self.additional_dropdown_layout2)
         self.add_header_dropdown("One Shot Layer", self.smartchord_LSB2, self.additional_dropdown_layout2)
-        self.add_header_dropdown("Layer Tap", self.smartchord_MSB2, self.additional_dropdown_layout2)
         self.add_header_dropdown("Double Layer", self.smartchord_CC_toggle2, self.additional_dropdown_layout2)
         self.main_layout.addLayout(self.additional_dropdown_layout2)
 
@@ -1049,6 +1047,10 @@ class MacroTab(QScrollArea):
             widget = self.button_layout.itemAt(i).widget()
             if widget is not None:
                 widget.deleteLater()
+                
+        for opt in [self.all_keycodes, self.basic_keycodes]:
+            opt.clear_buttons()  # Assuming clear_buttons() clears the existing buttons
+            opt.recreate_keycode_buttons()
 
         # Populate inversion buttons
         for keycode in self.base_macro_keycodes:
@@ -1407,7 +1409,7 @@ class FilteredTabbedKeycodes(QTabWidget):
             SimpleTab(self, "App, Media and Mouse", KEYCODES_MEDIA),            
             SimpleTab(self, "Advanced", KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM),
             SimpleTab(self, "Lighting", KEYCODES_BACKLIGHT),            
-            LayerTab(self, "Layers", KEYCODES_LAYERS, KEYCODES_LAYERS_DF, KEYCODES_LAYERS_MO, KEYCODES_LAYERS_TG, KEYCODES_LAYERS_TT, KEYCODES_LAYERS_OSL, KEYCODES_LAYERS_LT, KEYCODES_LAYERS_TO),
+            LayerTab(self, "Layers", KEYCODES_LAYERS, KEYCODES_LAYERS_DF, KEYCODES_LAYERS_MO, KEYCODES_LAYERS_TG, KEYCODES_LAYERS_TT, KEYCODES_LAYERS_OSL, KEYCODES_LAYERS_TO),
             midiTab(self, "Instrument", KEYCODES_MIDI_UPDOWN),   # Updated to SmartChordTab
             SmartChordTab(self, "SmartChord", KEYCODES_MIDI_CHORD_1, KEYCODES_MIDI_CHORD_2, KEYCODES_MIDI_CHORD_3, KEYCODES_MIDI_CHORD_4, KEYCODES_MIDI_SCALES, KEYCODES_MIDI_OCTAVE, KEYCODES_MIDI_KEY, KEYCODES_MIDI_INVERSION),
             midiadvancedTab(self, "MIDI",  KEYCODES_MIDI_ADVANCED + KEYCODES_MIDI_BANK + KEYCODES_Program_Change_UPDOWN + KEYCODES_OLED, KEYCODES_Program_Change, KEYCODES_MIDI_BANK_LSB, KEYCODES_MIDI_BANK_MSB, KEYCODES_MIDI_CC, KEYCODES_MIDI_CC_FIXED, KEYCODES_MIDI_CC_UP, KEYCODES_MIDI_CC_DOWN, KEYCODES_VELOCITY_STEPSIZE, KEYCODES_CC_STEPSIZE, KEYCODES_MIDI_CHANNEL, KEYCODES_MIDI_VELOCITY, KEYCODES_MIDI_CHANNEL_OS, KEYCODES_MIDI_CHANNEL_HOLD),
