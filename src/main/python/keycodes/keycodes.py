@@ -663,6 +663,17 @@ KEYCODES_MODIFIERS = [
     K("OSM(MOD_RCTL|MOD_RSFT|MOD_RALT)", "OSM\nRMeh", "Enable Right Control, Shift, and Alt for one keypress"),
     K("OSM(MOD_RCTL|MOD_RSFT|MOD_RALT|MOD_RGUI)", "OSM\nRHyp", "Enable Right Control, Shift, Alt, and GUI for one keypress"),
 
+    K("KC_GESC", "~\nEsc", "Esc normally, but ~ when Shift or GUI is pressed"),
+    K("KC_LSPO", "LS\n(", "Left Shift when held, ( when tapped"),
+    K("KC_RSPC", "RS\n)", "Right Shift when held, ) when tapped"),
+    K("KC_LCPO", "LC\n(", "Left Control when held, ( when tapped"),
+    K("KC_RCPC", "RC\n)", "Right Control when held, ) when tapped"),
+    K("KC_LAPO", "LA\n(", "Left Alt when held, ( when tapped"),
+    K("KC_RAPC", "RA\n)", "Right Alt when held, ) when tapped"),
+    K("KC_SFTENT", "RS\nEnter", "Right Shift when held, Enter when tapped"),
+]
+
+KEYCODES_KC = [
     K("LSFT(kc)", "LSft\n(kc)", masked=True),
     K("LCTL(kc)", "LCtl\n(kc)", masked=True),
     K("LALT(kc)", "LAlt\n(kc)", masked=True),
@@ -699,15 +710,6 @@ KEYCODES_MODIFIERS = [
     K("RCAG_T(kc)", "RCAG_T\n(kc)", "RCTL + RALT + RGUI when held, kc when tapped", masked=True),
     K("MEH_T(kc)", "Meh_T\n(kc)", "LCTL + LSFT + LALT when held, kc when tapped", masked=True),
     K("ALL_T(kc)", "ALL_T\n(kc)", "LCTL + LSFT + LALT + LGUI when held, kc when tapped", masked=True),
-
-    K("KC_GESC", "~\nEsc", "Esc normally, but ~ when Shift or GUI is pressed"),
-    K("KC_LSPO", "LS\n(", "Left Shift when held, ( when tapped"),
-    K("KC_RSPC", "RS\n)", "Right Shift when held, ) when tapped"),
-    K("KC_LCPO", "LC\n(", "Left Control when held, ( when tapped"),
-    K("KC_RCPC", "RC\n)", "Right Control when held, ) when tapped"),
-    K("KC_LAPO", "LA\n(", "Left Alt when held, ( when tapped"),
-    K("KC_RAPC", "RA\n)", "Right Alt when held, ) when tapped"),
-    K("KC_SFTENT", "RS\nEnter", "Right Shift when held, Enter when tapped"),
 ]
 
 KEYCODES_QUANTUM = [
