@@ -986,15 +986,17 @@ class MacroTab(QScrollArea):
         self.tapdance_keycodes = tapdance_keycodes
         self.base_macro_keycodes = base_macro_keycodes
 
-        # Main layout
-        self.main_layout = QHBoxLayout()
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.setLayout(self.main_layout)
+        # Create a main content widget to put inside the scroll area
+        content_widget = QWidget()
+        self.setWidget(content_widget)
+        self.setWidgetResizable(True)
+
+        # Main layout inside the content widget
+        self.main_layout = QVBoxLayout(content_widget)
 
         # 1. SmartChord Header and Dropdown
         self.add_header_dropdown("Macros", self.macro_keycodes)
-        
+
         # 2. Scales/Modes Header and Dropdown
         self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
 
@@ -1007,9 +1009,9 @@ class MacroTab(QScrollArea):
         self.main_layout.addLayout(self.button_layout)
 
         # Populate the inversion buttons
-        self.recreate_buttons()  # Call without arguments initially
+        self.recreate_buttons()
 
-        # 4. Spacer to push everything to the top
+        # 4. Add stretch at the end to push everything to the top
         self.main_layout.addStretch()
 
     def add_header_dropdown(self, header_text, keycodes):
@@ -1017,12 +1019,11 @@ class MacroTab(QScrollArea):
         # Create header
         header_label = QLabel(header_text)
         header_label.setAlignment(Qt.AlignCenter)
-        #self.main_layout.addWidget(header_label)
 
         # Create dropdown
         dropdown = QComboBox()
-        dropdown.setFixedWidth(300)  # Width stays at 200
-        dropdown.setFixedHeight(40)  # Increase the height to 40 pixels
+        dropdown.setFixedWidth(300)
+        dropdown.setFixedHeight(40)
         dropdown.addItem(f"{header_text}")  # Placeholder item
         dropdown.model().item(0).setEnabled(False)
         for keycode in keycodes:
@@ -1038,7 +1039,6 @@ class MacroTab(QScrollArea):
         if selected_index > 0:  # Ensure an actual selection was made
             selected_value = dropdown.itemData(selected_index)  # Get the selected keycode value
             # Process the selected value if necessary here
-            # Example: print(f"Selected: {selected_value}")
 
         # Reset the visible text to the default
         dropdown.setCurrentIndex(0)
@@ -1078,6 +1078,7 @@ class MacroTab(QScrollArea):
     def has_buttons(self):
         """Check if there are buttons or dropdown items."""
         return (self.button_layout.count() > 0)
+
 
 class midiTab(QScrollArea):
     keycode_changed = pyqtSignal(str)
