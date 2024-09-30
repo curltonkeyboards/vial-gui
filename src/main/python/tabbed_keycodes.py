@@ -991,8 +991,11 @@ class MacroTab(QScrollArea):
         self.setWidget(content_widget)
         self.setWidgetResizable(True)
 
-        # Main layout inside the content widget
-        self.main_layout = QHBoxLayout(content_widget)
+        # Main layout inside the content widget (QVBoxLayout to align at the top)
+        main_vlayout = QVBoxLayout(content_widget)
+
+        # Inner horizontal layout (your original main_layout)
+        self.main_layout = QHBoxLayout()
 
         # 1. SmartChord Header and Dropdown
         self.add_header_dropdown("Macros", self.macro_keycodes)
@@ -1011,8 +1014,11 @@ class MacroTab(QScrollArea):
         # Populate the inversion buttons
         self.recreate_buttons()
 
-        # 4. Add stretch at the end to push everything to the top
-        self.main_layout.addStretch()
+        # Add the horizontal layout (main_layout) to the vertical layout (main_vlayout)
+        main_vlayout.addLayout(self.main_layout)
+
+        # Add a stretch to push everything to the top
+        main_vlayout.addStretch()
 
     def add_header_dropdown(self, header_text, keycodes):
         """Helper method to add a header and dropdown."""
@@ -1078,6 +1084,7 @@ class MacroTab(QScrollArea):
     def has_buttons(self):
         """Check if there are buttons or dropdown items."""
         return (self.button_layout.count() > 0)
+
 
 
 class midiTab(QScrollArea):
