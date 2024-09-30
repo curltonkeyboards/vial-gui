@@ -995,21 +995,18 @@ class MacroTab(QScrollArea):
         # Inner horizontal layout (your original main_layout)
         self.main_layout = QHBoxLayout()
 
-        # Set spacing between widgets to be minimal
-        self.main_layout.setSpacing(10)  # You can adjust this value for desired spacing
-        self.main_layout.setContentsMargins(0, 0, 0, 0)  # No margin between widgets and the edges
-
-        # 1. Add dropdowns and buttons in the same row (inside the same QHBoxLayout)
+        # 1. SmartChord Header and Dropdown
         self.add_header_dropdown("Macros", self.macro_keycodes)
+
+        # 2. Scales/Modes Header and Dropdown
         self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
 
-        # 2. Inversions Header (with buttons)
+        # 3. Inversions Header
         self.base_macro_label = QLabel("Macro Recording")
         self.main_layout.addWidget(self.base_macro_label)
 
         # Layout for buttons (Inversions)
         self.button_layout = QHBoxLayout()
-        self.button_layout.setSpacing(5)  # Adjust the spacing between buttons
         self.main_layout.addLayout(self.button_layout)
 
         # Populate the inversion buttons
@@ -1085,6 +1082,7 @@ class MacroTab(QScrollArea):
     def has_buttons(self):
         """Check if there are buttons or dropdown items."""
         return (self.button_layout.count() > 0)
+
 
 
 class midiTab(QScrollArea):
