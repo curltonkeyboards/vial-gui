@@ -984,31 +984,40 @@ class MacroTab(QScrollArea):
         self.tapdance_keycodes = tapdance_keycodes
         self.base_macro_keycodes = base_macro_keycodes
 
-        # Main layout
-        self.main_layout = QHBoxLayout()
-        self.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOn)
-        self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
-        self.setLayout(self.main_layout)
+        # Main widget to hold everything
+        content_widget = QWidget()
+        self.setWidget(content_widget)
+        self.setWidgetResizable(True)
 
-        # 1. SmartChord Header and Dropdown
+        # Main vertical layout to control alignment and stretching
+        main_vlayout = QVBoxLayout(content_widget)
+
+        # Horizontal layout for the actual content (dropdowns, buttons)
+        self.main_layout = QHBoxLayout()
+
+        # Add dropdowns and buttons
         self.add_header_dropdown("Macros", self.macro_keycodes)
-        
-        # 2. Scales/Modes Header and Dropdown
         self.add_header_dropdown("Tapdance", self.tapdance_keycodes)
 
-        # 3. Inversions Header
+        # Inversions Header
         self.base_macro_label = QLabel("Macro Recording")
         self.main_layout.addWidget(self.base_macro_label)
 
-        # Layout for buttons (Inversions)
+        # Button layout for inversion buttons
         self.button_layout = QHBoxLayout()
         self.main_layout.addLayout(self.button_layout)
 
         # Populate the inversion buttons
-        self.recreate_buttons()  # Call without arguments initially
+        self.recreate_buttons()
 
-        # 4. Spacer to push everything to the top
-        self.main_layout.addStretch()
+        # Add the horizontal main layout to the vertical layout
+        main_vlayout.addLayout(self.main_layout)
+
+        # Add a stretch to push everything to the top
+        main_vlayout.addStretch()
+
+    # Rest of your methods remain the same
+
 
     def add_header_dropdown(self, header_text, keycodes):
         """Helper method to add a header and dropdown."""
@@ -1405,6 +1414,10 @@ class FilteredTabbedKeycodes(QTabWidget):
             SimpleTab(self, "App, Media and Mouse", KEYCODES_MEDIA),            
             SimpleTab(self, "Advanced", KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM),
             SimpleTab(self, "Lighting", KEYCODES_BACKLIGHT),            
+            LayerTab(self, "Layers", KEYCODES_LAYERS, KEYCODES_LAYERS_DF, KEYCODES_LAYERS_MO, KEYCODES_LAYERS_TG, KEYCODES_LAYERS_TT, KEYCODES_LAYERS_OSL, KEYCODES_LAYERS_TO),
+            midiTab(self, "Instrument", KEYCODES_MIDI_UPDOWN),   # Updated to SmartChordTab
+            SmartChordTab(self, "SmartChord", KEYCODES_MIDI_CHORD_1, KEYCODES_MIDI_CHORD_2, KEYCODES_MIDI_CHORD_3, KEYCODES_MIDI_CHORD_4, KEYCODES_MIDI_SCALES, KEYCODES_MIDI_OCTAVE, KEYCODES_MIDI_KEY, KEYCODES_MIDI_INVERSION),
+            midiadvancedTab(self, "MIDI",  KEYCODES_MIDI_ADVANCED + KEYCODES_MIDI_BANK + KEYCODES_Program_Change_UPDOWN + KEYCODES_OLED, KEYCODES_Program_Change, KEYCODES_MIDI_BANK_LSB, KEYCODES_MIDI_BANK_MSB, KEYCODES_MIDI_CC, KEYCODES_MIDI_CC_FIXED, KEYCODES_MIDI_CC_UP, KEYCODES_MIDI_CC_DOWN, KEYCODES_VELOCITY_STEPSIZE, KEYCODES_CC_STEPSIZE, KEYCODES_MIDI_CHANNEL, KEYCODES_MIDI_VELOCITY, KEYCODES_MIDI_CHANNEL_OS, KEYCODES_MIDI_CHANNEL_HOLD),
             MacroTab(self, "Macro", KEYCODES_MACRO, KEYCODES_TAP_DANCE, KEYCODES_MACRO_BASE),
         ]
 
