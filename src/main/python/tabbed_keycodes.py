@@ -1047,10 +1047,6 @@ class MacroTab(QScrollArea):
             widget = self.button_layout.itemAt(i).widget()
             if widget is not None:
                 widget.deleteLater()
-                
-        for opt in [self.base_macro_keycodes]:
-            opt.clear_buttons()  # Assuming clear_buttons() clears the existing buttons
-            opt.recreate_keycode_buttons()
 
         # Populate inversion buttons
         for keycode in self.base_macro_keycodes:
