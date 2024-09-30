@@ -992,7 +992,7 @@ class MacroTab(QScrollArea):
         self.setWidgetResizable(True)
 
         # Main layout inside the content widget
-        self.main_layout = QVBoxLayout(content_widget)
+        self.main_layout = QHBoxLayout(content_widget)
 
         # 1. SmartChord Header and Dropdown
         self.add_header_dropdown("Macros", self.macro_keycodes)
