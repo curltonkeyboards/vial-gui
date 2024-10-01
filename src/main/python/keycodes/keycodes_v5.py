@@ -857,8 +857,8 @@ class keycodes_v5:
         "RGB_KC_COLOR_18": 0xC49E,
         "RGB_KC_COLOR_19": 0xC49F,  
         
-        "SMARTCHORD_DOWN": 0xC4A0
-        "SMARTCHORD_UP": 0xC4A1
+        "SMARTCHORD_DOWN": 0xC4A0,
+        "SMARTCHORD_UP": 0xC4A1,
         
         "QK_KB":0xC600,  # custom keycodes safe range
         
