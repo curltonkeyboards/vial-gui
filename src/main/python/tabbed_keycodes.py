@@ -220,6 +220,9 @@ class SmartChordTab(QScrollArea):
         self.add_smallheader_dropdown("Key Selector", self.smartchord_key, self.additional_dropdown_layout)
         self.add_smallheader_dropdown("Chord Inversion/Position", self.inversion_keycodes, self.additional_dropdown_layout)
         self.main_layout.addLayout(self.additional_dropdown_layout)
+        
+        # Populate the inversion buttons
+        self.recreate_buttons()
 
         # Spacer to push everything to the top
         self.main_layout.addStretch()
@@ -435,6 +438,14 @@ class SmartChordTab(QScrollArea):
 
         # Add the vertical box (header + dropdown) to the provided layout
         layout.addLayout(vbox)
+
+    def recreate_buttons(self, keycode_filter=None):
+        # Clear previous widgets
+        for i in reversed(range(self.button_layout.count())):
+            widget = self.button_layout.itemAt(i).widget()
+            if widget is not None:
+                widget.deleteLater()
+
 
     def on_selection_change(self, index):
         selected_qmk_id = self.sender().itemData(index)
