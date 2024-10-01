@@ -210,27 +210,16 @@ class SmartChordTab(QScrollArea):
         self.add_header_dropdown("3 Note Chords", self.smartchord_keycodes_1, self.smartchord_dropdown_layout)
         self.add_header_dropdown("4 Note Chords", self.smartchord_keycodes_2, self.smartchord_dropdown_layout)
         self.add_header_dropdown("5 Note Chords", self.smartchord_keycodes_3, self.smartchord_dropdown_layout)
-        self.add_header_dropdown("Advanced Chords", self.smartchord_keycodes_4, self.smartchord_dropdown_layout)
         self.add_header_dropdown("Scales/Modes", self.scales_modes_keycodes, self.smartchord_dropdown_layout)
+        self.add_header_dropdown("Advanced Chords", self.smartchord_keycodes_4, self.smartchord_dropdown_layout)
         self.main_layout.addLayout(self.smartchord_dropdown_layout)
 
         # Create a horizontal layout for the Octave, Key, and Program Change dropdowns
         self.additional_dropdown_layout = QHBoxLayout()
         self.add_smallheader_dropdown("Octave Selector", self.smartchord_octave_1, self.additional_dropdown_layout)
         self.add_smallheader_dropdown("Key Selector", self.smartchord_key, self.additional_dropdown_layout)
+        self.add_smallheader_dropdown("Chord Inversions", self.smartchord_key, self.additional_dropdown_layout)
         self.main_layout.addLayout(self.additional_dropdown_layout)
-
-        # Inversions Header
-        self.inversion_label = QLabel("Chord Inversions")
-        self.inversion_label.setAlignment(Qt.AlignCenter)  # Center the label text
-        self.main_layout.addWidget(self.inversion_label, alignment=Qt.AlignCenter)  # Add with center alignment
-
-        # Layout for inversion buttons
-        self.button_layout = QGridLayout()
-        self.main_layout.addLayout(self.button_layout)
-
-        # Populate the inversion buttons
-        self.recreate_buttons()
 
         # Spacer to push everything to the top
         self.main_layout.addStretch()
@@ -421,15 +410,9 @@ class SmartChordTab(QScrollArea):
         # Create a vertical layout to hold header and dropdown
         vbox = QVBoxLayout()
 
-        # Create header
-        header_label = QLabel(header_text)
-        header_label.setAlignment(Qt.AlignCenter)
-        vbox.addWidget(header_label)
-
         # Create dropdown
         dropdown = CenteredComboBox()
         dropdown.setFixedHeight(40)  # Set height of dropdown
-        dropdown.setFixedWidth(300)  # Set width of dropdown
 
         # Add a placeholder item as the first item
         dropdown.addItem(f"{header_text}")  # Placeholder item
