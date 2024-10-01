@@ -220,7 +220,7 @@ class SmartChordTab(QScrollArea):
         self.additional_dropdown_layout = QHBoxLayout()
         self.add_smallheader_dropdown("Octave Selector", self.smartchord_octave_1, self.additional_dropdown_layout)
         self.add_smallheader_dropdown("Key Selector", self.smartchord_key, self.additional_dropdown_layout)
-        self.add_smallheader_dropdown("Chord Inversion/Position", self.inversiondropdown, self.additional_dropdown_layout)
+        self.add_smallheader_dropdown("Chord Inversion/Position", self.inversion_dropdown, self.additional_dropdown_layout)
         self.main_layout.addLayout(self.additional_dropdown_layout)
 
         # Layout for inversion buttons
