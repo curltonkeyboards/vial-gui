@@ -994,9 +994,9 @@ class LightingTab(QScrollArea):
         self.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
         # Inversions Header
-        self.inversion_label = QLabel("Function Buttons")
-        self.inversion_label.setAlignment(Qt.AlignCenter)  # Center the label text
-        self.main_layout.addWidget(self.inversion_label, alignment=Qt.AlignCenter)  # Add to layout with center alignment
+        #self.inversion_label = QLabel("Function Buttons")
+        #self.inversion_label.setAlignment(Qt.AlignCenter)  # Center the label text
+        #self.main_layout.addWidget(self.inversion_label, alignment=Qt.AlignCenter)  # Add to layout with center alignment
 
 
         # Layout for inversion buttons
@@ -1109,7 +1109,6 @@ class LightingTab(QScrollArea):
         for keycode in self.inversion_keycodes:
             if keycode_filter is None or keycode_filter(keycode.qmk_id):
                 btn = SquareButton()
-                btn.setFixedWidth(40)
                 btn.setFixedHeight(40)
                 btn.setText(Keycode.label(keycode.qmk_id))
                 btn.clicked.connect(lambda _, k=keycode.qmk_id: self.keycode_changed.emit(k))
