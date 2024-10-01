@@ -1261,9 +1261,10 @@ KEYCODES_VELOCITY_STEPSIZE = [
 ]
 
 KEYCODES_MIDI_SMARTCHORDBUTTONS = [
+    K("SMARTCHORD_DOWN", "QuickChord\n▼", "QuickChord Down"),
     K("MI_CHORD_99", "QuickChord", "Press QuickChord"),
     K("SMARTCHORD_UP", "QuickChord\n▲", "QuickChord Up"),
-    K("SMARTCHORD_DOWN", "QuickChord\n▼", "QuickChord Down"),
+    K("COLORBLIND_TOGGLE", "Colorblind\nOn/Off", "Colorblind"),
 ]
 
 KEYCODES_MIDI_CHANNEL_HOLD = [

@@ -859,6 +859,7 @@ class keycodes_v5:
         
         "SMARTCHORD_DOWN": 0xC4A0,
         "SMARTCHORD_UP": 0xC4A1,
+        "COLORBLIND_TOGGLE": 0xC4A2,
         
         "QK_KB":0xC600,  # custom keycodes safe range
         
