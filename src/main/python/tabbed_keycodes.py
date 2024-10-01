@@ -1003,7 +1003,7 @@ class MacroTab(QScrollArea):
 
         # 3. Inversions Header
         self.base_macro_label = QLabel("Macro Recording")
-        self.base_macro_label.setAlignment(Qt.AlignCenter)  # Center the label text
+        self.base_macro_label.setAlignment(Qt.AlignRight)  # Center the label text
         self.main_layout.addWidget(self.base_macro_label)
 
         # Layout for buttons (Inversions)
