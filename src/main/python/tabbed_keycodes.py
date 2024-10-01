@@ -221,6 +221,9 @@ class SmartChordTab(QScrollArea):
         self.add_smallheader_dropdown("Chord Inversion/Position", self.inversion_keycodes, self.additional_dropdown_layout)
         self.main_layout.addLayout(self.additional_dropdown_layout)
         
+        self.button_layout = QGridLayout()
+        self.main_layout.addLayout(self.button_layout)
+        
         # Populate the inversion buttons
         self.recreate_buttons()
 
