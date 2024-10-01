@@ -1398,6 +1398,77 @@ KEYCODES_MIDI_INVERSION = [
  K ("MI_INVERSION_6", "6th \nInversion", "6th Inversion"),
 ]
 
+KEYCODES_RGB_KC_CUSTOM = [
+    K("RGB_KC_1", "RGB None", "RGB Mode: None"),
+    K("RGB_KC_2", "RGB Solid Color", "RGB Mode: Solid Color"),
+    K("RGB_KC_3", "RGB Alphas Mods", "RGB Mode: Alphas Mods"),
+    K("RGB_KC_4", "RGB Gradient Up Down", "RGB Mode: Gradient Up Down"),
+    K("RGB_KC_5", "RGB Gradient Left Right", "RGB Mode: Gradient Left Right"),
+    K("RGB_KC_6", "RGB Breathing", "RGB Mode: Breathing"),
+    K("RGB_KC_7", "RGB Band SAT", "RGB Mode: Band Saturation"),
+    K("RGB_KC_8", "RGB Band VAL", "RGB Mode: Band Brightness"),
+    K("RGB_KC_9", "RGB Band Pinwheel SAT", "RGB Mode: Band Pinwheel Saturation"),
+    K("RGB_KC_10", "RGB Band Pinwheel VAL", "RGB Mode: Band Pinwheel Brightness"),
+    K("RGB_KC_11", "RGB Band Spiral SAT", "RGB Mode: Band Spiral Saturation"),
+    K("RGB_KC_12", "RGB Band Spiral VAL", "RGB Mode: Band Spiral Brightness"),
+    K("RGB_KC_13", "RGB Cycle All", "RGB Mode: Cycle All"),
+    K("RGB_KC_14", "RGB Cycle Left Right", "RGB Mode: Cycle Left Right"),
+    K("RGB_KC_15", "RGB Cycle Up Down", "RGB Mode: Cycle Up Down"),
+    K("RGB_KC_16", "RGB Cycle Out In", "RGB Mode: Cycle Out In"),
+    K("RGB_KC_17", "RGB Cycle Out In Dual", "RGB Mode: Cycle Out In Dual"),
+    K("RGB_KC_18", "RGB Rainbow Moving Chevron", "RGB Mode: Rainbow Moving Chevron"),
+    K("RGB_KC_19", "RGB Cycle Pinwheel", "RGB Mode: Cycle Pinwheel"),
+    K("RGB_KC_20", "RGB Cycle Spiral", "RGB Mode: Cycle Spiral"),
+    K("RGB_KC_21", "RGB Dual Beacon", "RGB Mode: Dual Beacon"),
+    K("RGB_KC_22", "RGB Rainbow Beacon", "RGB Mode: Rainbow Beacon"),
+    K("RGB_KC_23", "RGB Rainbow Pinwheels", "RGB Mode: Rainbow Pinwheels"),
+    K("RGB_KC_24", "RGB Raindrops", "RGB Mode: Raindrops"),
+    K("RGB_KC_25", "RGB Jellybean Raindrops", "RGB Mode: Jellybean Raindrops"),
+    K("RGB_KC_26", "RGB Hue Breathing", "RGB Mode: Hue Breathing"),
+    K("RGB_KC_27", "RGB Hue Pendulum", "RGB Mode: Hue Pendulum"),
+    K("RGB_KC_28", "RGB Hue Wave", "RGB Mode: Hue Wave"),
+    K("RGB_KC_29", "RGB Pixel Fractal", "RGB Mode: Pixel Fractal"),
+    K("RGB_KC_30", "RGB Pixel Flow", "RGB Mode: Pixel Flow"),
+    K("RGB_KC_31", "RGB Pixel Rain", "RGB Mode: Pixel Rain"),
+    K("RGB_KC_32", "RGB Typing Heatmap", "RGB Mode: Typing Heatmap"),
+    K("RGB_KC_33", "RGB Digital Rain", "RGB Mode: Digital Rain"),
+    K("RGB_KC_34", "RGB Solid Reactive Simple", "RGB Mode: Solid Reactive Simple"),
+    K("RGB_KC_35", "RGB Solid Reactive", "RGB Mode: Solid Reactive"),
+    K("RGB_KC_36", "RGB Solid Reactive Wide", "RGB Mode: Solid Reactive Wide"),
+    K("RGB_KC_37", "RGB Solid Reactive MultiWide", "RGB Mode: Solid Reactive MultiWide"),
+    K("RGB_KC_38", "RGB Solid Reactive Cross", "RGB Mode: Solid Reactive Cross"),
+    K("RGB_KC_39", "RGB Solid Reactive MultiCross", "RGB Mode: Solid Reactive MultiCross"),
+    K("RGB_KC_40", "RGB Solid Reactive Nexus", "RGB Mode: Solid Reactive Nexus"),
+    K("RGB_KC_41", "RGB Solid Reactive MultiNexus", "RGB Mode: Solid Reactive MultiNexus"),
+    K("RGB_KC_42", "RGB Splash", "RGB Mode: Splash"),
+    K("RGB_KC_43", "RGB MultiSplash", "RGB Mode: MultiSplash"),
+    K("RGB_KC_44", "RGB Solid Splash", "RGB Mode: Solid Splash"),
+    K("RGB_KC_45", "RGB Solid MultiSplash", "RGB Mode: Solid MultiSplash")
+]
+
+KEYCODES_RGB_KC_COLOR = [
+    K("RGB_KC_COLOR_1", "RGB Azure", "RGB Color: Azure"),
+    K("RGB_KC_COLOR_2", "RGB Black", "RGB Color: Black/Off"),
+    K("RGB_KC_COLOR_3", "RGB Blue", "RGB Color: Blue"),
+    K("RGB_KC_COLOR_4", "RGB Chartreuse", "RGB Color: Chartreuse"),
+    K("RGB_KC_COLOR_5", "RGB Coral", "RGB Color: Coral"),
+    K("RGB_KC_COLOR_6", "RGB Cyan", "RGB Color: Cyan"),
+    K("RGB_KC_COLOR_7", "RGB Gold", "RGB Color: Gold"),
+    K("RGB_KC_COLOR_8", "RGB Goldenrod", "RGB Color: Goldenrod"),
+    K("RGB_KC_COLOR_9", "RGB Green", "RGB Color: Green"),
+    K("RGB_KC_COLOR_10", "RGB Magenta", "RGB Color: Magenta"),
+    K("RGB_KC_COLOR_11", "RGB Orange", "RGB Color: Orange"),
+    K("RGB_KC_COLOR_12", "RGB Pink", "RGB Color: Pink"),
+    K("RGB_KC_COLOR_13", "RGB Purple", "RGB Color: Purple"),
+    K("RGB_KC_COLOR_14", "RGB Red", "RGB Color: Red"),
+    K("RGB_KC_COLOR_15", "RGB Spring Green", "RGB Color: Spring Green"),
+    K("RGB_KC_COLOR_16", "RGB Teal", "RGB Color: Teal"),
+    K("RGB_KC_COLOR_17", "RGB Turquoise", "RGB Color: Turquoise"),
+    K("RGB_KC_COLOR_18", "RGB White", "RGB Color: White"),
+    K("RGB_KC_COLOR_19", "RGB Yellow", "RGB Color: Yellow")
+]
+
+
 KEYCODES_HIDDEN = []
 for x in range(256):
     KEYCODES_HIDDEN.append(K("TD({})".format(x), "TD({})".format(x)))
@@ -1477,8 +1548,8 @@ def recreate_keycodes():
 
     KEYCODES.clear()
     KEYCODES.extend(KEYCODES_SPECIAL + KEYCODES_BASIC + KEYCODES_SHIFTED + KEYCODES_ISO + KEYCODES_LAYERS + KEYCODES_LAYERS_DF + KEYCODES_LAYERS_MO + KEYCODES_LAYERS_TG + KEYCODES_LAYERS_TT + KEYCODES_LAYERS_OSL + KEYCODES_LAYERS_TO + KEYCODES_LAYERS_LT +
-                    KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM + KEYCODES_BACKLIGHT + KEYCODES_MEDIA + KEYCODES_OLED + KEYCODES_CLEAR +
-                    KEYCODES_TAP_DANCE + KEYCODES_MACRO + KEYCODES_MACRO_BASE + KEYCODES_USER + KEYCODES_HIDDEN + KEYCODES_MIDI+ KEYCODES_MIDI_CHANNEL_OS + KEYCODES_MIDI_CHANNEL_HOLD + 
+                    KEYCODES_BOOT + KEYCODES_MODIFIERS + KEYCODES_QUANTUM + KEYCODES_BACKLIGHT + KEYCODES_MEDIA + KEYCODES_OLED + KEYCODES_CLEAR + KEYCODES_RGB_KC_COLOR +
+                    KEYCODES_TAP_DANCE + KEYCODES_MACRO + KEYCODES_MACRO_BASE + KEYCODES_USER + KEYCODES_HIDDEN + KEYCODES_MIDI+ KEYCODES_MIDI_CHANNEL_OS + KEYCODES_MIDI_CHANNEL_HOLD + KEYCODES_RGB_KC_CUSTOM +
                     KEYCODES_MIDI_CC_FIXED+KEYCODES_MIDI_CC+KEYCODES_MIDI_CC_DOWN+KEYCODES_MIDI_CC_UP+KEYCODES_MIDI_BANK+KEYCODES_Program_Change+KEYCODES_MIDI_SMARTCHORDBUTTONS+KEYCODES_VELOCITY_STEPSIZE+
                     KEYCODES_MIDI_VELOCITY+KEYCODES_CC_STEPSIZE+KEYCODES_MIDI_CHANNEL+KEYCODES_MIDI_UPDOWN+KEYCODES_MIDI_CHORD_1+KEYCODES_MIDI_CHORD_2+KEYCODES_MIDI_CHORD_3+KEYCODES_MIDI_CHORD_4+
                     KEYCODES_MIDI_INVERSION+KEYCODES_MIDI_SCALES+KEYCODES_MIDI_OCTAVE+KEYCODES_MIDI_KEY+KEYCODES_Program_Change_UPDOWN+KEYCODES_MIDI_BANK_LSB+KEYCODES_MIDI_BANK_MSB+KEYCODES_MIDI_PEDAL+KEYCODES_MIDI_ADVANCED)
