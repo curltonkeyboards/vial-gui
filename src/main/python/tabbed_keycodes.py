@@ -1002,7 +1002,7 @@ class MacroTab(QScrollArea):
         self.add_header_dropdown("Tapdance Selection", self.tapdance_keycodes)
 
         # 3. Inversions Header
-        self.base_macro_label = QLabel("Macro Recording")
+        self.base_macro_label = QLabel("       Macro Recording")
         self.main_layout.addWidget(self.base_macro_label)
 
         # Layout for buttons (Inversions)
