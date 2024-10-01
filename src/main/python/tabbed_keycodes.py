@@ -1026,7 +1026,7 @@ class MacroTab(QScrollArea):
 
         # Create dropdown
         dropdown = CenteredComboBox()
-        dropdown.setFixedWidth(400)
+        dropdown.setFixedWidth(350)
         dropdown.setFixedHeight(40)
         dropdown.addItem(f"{header_text}")  # Placeholder item
         dropdown.model().item(0).setEnabled(False)
@@ -1061,6 +1061,7 @@ class MacroTab(QScrollArea):
         for keycode in self.base_macro_keycodes:
             if keycode_filter is None or keycode_filter(keycode.qmk_id):
                 btn = SquareButton()
+                btn.setFixedWidth(40)
                 btn.setFixedHeight(40)
                 btn.setText(Keycode.label(keycode.qmk_id))
                 btn.clicked.connect(lambda _, k=keycode.qmk_id: self.keycode_changed.emit(k))
