@@ -527,9 +527,9 @@ class midiadvancedTab(QScrollArea):
         
         # Add Channel and Velocity dropdowns in the second row
         self.additional_dropdown_layout4 = QHBoxLayout()
-        self.add_header_dropdown("Default Channel", self.channel_options, self.additional_dropdown_layout4)
-        self.add_header_dropdown("One Shot Channel", self.channel_oneshot, self.additional_dropdown_layout4)
-        self.add_header_dropdown("Hold Channel", self.channel_hold, self.additional_dropdown_layout4)
+        self.add_header_dropdown("Default MIDI Channel", self.channel_options, self.additional_dropdown_layout4)
+        self.add_header_dropdown("Next Key MIDI Channel", self.channel_oneshot, self.additional_dropdown_layout4)
+        self.add_header_dropdown("Hold for MIDI Channel", self.channel_hold, self.additional_dropdown_layout4)
         self.add_header_dropdown("Velocity", self.velocity_options, self.additional_dropdown_layout4)
         self.main_layout.addLayout(self.additional_dropdown_layout4)
         
@@ -545,8 +545,8 @@ class midiadvancedTab(QScrollArea):
 
         # Add Channel and Velocity dropdowns in the second row
         self.additional_dropdown_layout3 = QHBoxLayout()
-        self.add_header_dropdown("Velocity ▲▼ Multiplier", self.velocity_multiplier_options, self.additional_dropdown_layout3)
         self.add_header_dropdown("CC ▲▼ Multiplier", self.cc_multiplier_options, self.additional_dropdown_layout3)
+        self.add_header_dropdown("Velocity ▲▼ Multiplier", self.velocity_multiplier_options, self.additional_dropdown_layout3) 
         self.main_layout.addLayout(self.additional_dropdown_layout3)
 
         self.inversion_label = QLabel("Advanced Midi Settings")
@@ -1588,7 +1588,7 @@ class FilteredTabbedKeycodes(QTabWidget):
             LayerTab(self, "Layers", KEYCODES_LAYERS, KEYCODES_LAYERS_DF, KEYCODES_LAYERS_MO, KEYCODES_LAYERS_TG, KEYCODES_LAYERS_TT, KEYCODES_LAYERS_OSL, KEYCODES_LAYERS_TO),
             midiTab(self, "Instrument", KEYCODES_MIDI_UPDOWN),   # Updated to SmartChordTab
             SmartChordTab(self, "SmartChord", KEYCODES_MIDI_CHORD_1, KEYCODES_MIDI_CHORD_2, KEYCODES_MIDI_CHORD_3, KEYCODES_MIDI_CHORD_4, KEYCODES_MIDI_SCALES, KEYCODES_MIDI_OCTAVE, KEYCODES_MIDI_KEY, KEYCODES_MIDI_INVERSION, KEYCODES_MIDI_SMARTCHORDBUTTONS),
-            midiadvancedTab(self, "MIDI",  KEYCODES_MIDI_ADVANCED + KEYCODES_MIDI_BANK + KEYCODES_Program_Change_UPDOWN + KEYCODES_OLED, KEYCODES_Program_Change, KEYCODES_MIDI_BANK_LSB, KEYCODES_MIDI_BANK_MSB, KEYCODES_MIDI_CC, KEYCODES_MIDI_CC_FIXED, KEYCODES_MIDI_CC_UP, KEYCODES_MIDI_CC_DOWN, KEYCODES_VELOCITY_STEPSIZE, KEYCODES_CC_STEPSIZE, KEYCODES_MIDI_CHANNEL, KEYCODES_MIDI_VELOCITY, KEYCODES_MIDI_CHANNEL_OS, KEYCODES_MIDI_CHANNEL_HOLD),
+            midiadvancedTab(self, "MIDI",  KEYCODES_MIDI_ADVANCED, KEYCODES_Program_Change, KEYCODES_MIDI_BANK_LSB, KEYCODES_MIDI_BANK_MSB, KEYCODES_MIDI_CC, KEYCODES_MIDI_CC_FIXED, KEYCODES_MIDI_CC_UP, KEYCODES_MIDI_CC_DOWN, KEYCODES_VELOCITY_STEPSIZE, KEYCODES_CC_STEPSIZE, KEYCODES_MIDI_CHANNEL, KEYCODES_MIDI_VELOCITY, KEYCODES_MIDI_CHANNEL_OS, KEYCODES_MIDI_CHANNEL_HOLD),
             MacroTab(self, "Macro", KEYCODES_MACRO, KEYCODES_TAP_DANCE, KEYCODES_MACRO_BASE),
             SimpleTab(self, " ", KEYCODES_CLEAR),     
         ]
