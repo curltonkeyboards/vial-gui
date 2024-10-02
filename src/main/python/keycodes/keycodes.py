@@ -1265,7 +1265,9 @@ KEYCODES_MIDI_SMARTCHORDBUTTONS = [
     K("MI_CHORD_99", "QuickChord", "Press QuickChord"),
     K("SMARTCHORD_UP", "QuickChord\n▲", "QuickChord Up"),
     K("COLORBLIND_TOGGLE", "Colorblind\nOn/Off", "Colorblind"),
-    K("SMARTCHORDCOLOR_TOGGLE", "Smartchord LEDs Toggle", "Smartchord LEDs Toggle"),
+    K("SMARTCHORDCOLOR_TOGGLE", "Smartchord\nRGB\nOn/Off", "Smartchord LEDs Toggle"),
+    K("OLED_1", "Screen\nKeyboard\nShift", "Momentarily turn on layer when pressed"),
+    
 ]
 
 KEYCODES_MIDI_CHANNEL_HOLD = [
