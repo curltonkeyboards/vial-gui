@@ -595,6 +595,7 @@ class keycodes_v6:
         "MI_CHORD_0": 0xC396,
         "MI_CHORD_1": 0xC397,
         "MI_CHORD_2": 0xC398,
+        "MI_CHORD_128": 0xC399,
         "MI_CHORD_3": 0xC39A,
         "MI_CHORD_4": 0xC39B,
         "MI_CHORD_5": 0xC39C,
@@ -860,6 +861,7 @@ class keycodes_v6:
         "SMARTCHORD_DOWN": 0xC4A0,
         "SMARTCHORD_UP": 0xC4A1,
         "COLORBLIND_TOGGLE": 0xC4A2,
+        "SMARTCHORDCOLOR_TOGGLE": 0xC4A3,
 
         "QK_KB":0xC600,  # custom keycodes safe range
         

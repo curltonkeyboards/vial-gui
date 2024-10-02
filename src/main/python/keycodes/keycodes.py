@@ -1265,6 +1265,7 @@ KEYCODES_MIDI_SMARTCHORDBUTTONS = [
     K("MI_CHORD_99", "QuickChord", "Press QuickChord"),
     K("SMARTCHORD_UP", "QuickChord\n▲", "QuickChord Up"),
     K("COLORBLIND_TOGGLE", "Colorblind\nOn/Off", "Colorblind"),
+    K("SMARTCHORDCOLOR_TOGGLE", "Smartchord LEDs Toggle", "Smartchord LEDs Toggle"),
 ]
 
 KEYCODES_MIDI_CHANNEL_HOLD = [
@@ -1287,22 +1288,22 @@ KEYCODES_MIDI_CHANNEL_HOLD = [
 ]
 
 KEYCODES_MIDI_CHANNEL_OS = [
-    K("MI_CHANNEL_OS_1", "Next Key\nChannel\n1", "OSorary switch to MIDI channel 1"),
-    K("MI_CHANNEL_OS_2", "Next Key\nChannel\n2", "OSorary switch to MIDI channel 2"),
-    K("MI_CHANNEL_OS_3", "Next Key\nChannel\n3", "OSorary switch to MIDI channel 3"),
-    K("MI_CHANNEL_OS_4", "Next Key\nChannel\n4", "OSorary switch to MIDI channel 4"),
-    K("MI_CHANNEL_OS_5", "Next Key\nChannel\n5", "OSorary switch to MIDI channel 5"),
-    K("MI_CHANNEL_OS_6", "Next Key\nChannel\n6", "OSorary switch to MIDI channel 6"),
-    K("MI_CHANNEL_OS_7", "Next Key\nChannel\n7", "OSorary switch to MIDI channel 7"),
-    K("MI_CHANNEL_OS_8", "Next Key\nChannel\n8", "OSorary switch to MIDI channel 8"),
-    K("MI_CHANNEL_OS_9", "Next Key\nChannel\n9", "OSorary switch to MIDI channel 9"),
-    K("MI_CHANNEL_OS_10", "Next Key\nChannel\n10", "OSorary switch to MIDI channel 10"),
-    K("MI_CHANNEL_OS_11", "Next Key\nChannel\n11", "OSorary switch to MIDI channel 11"),
-    K("MI_CHANNEL_OS_12", "Next Key\nChannel\n12", "OSorary switch to MIDI channel 12"),
-    K("MI_CHANNEL_OS_13", "Next Key\nChannel\n13", "OSorary switch to MIDI channel 13"),
-    K("MI_CHANNEL_OS_14", "Next Key\nChannel\n14", "OSorary switch to MIDI channel 14"),
-    K("MI_CHANNEL_OS_15", "Next Key\nChannel\n15", "OSorary switch to MIDI channel 15"),
-    K("MI_CHANNEL_OS_16", "Next Key\nChannel\n16", "OSorary switch to MIDI channel 16"),
+    K("MI_CHANNEL_OS_1", "Next Key\nChannel\n1", "Temporary switch to MIDI channel 1"),
+    K("MI_CHANNEL_OS_2", "Next Key\nChannel\n2", "Temporary switch to MIDI channel 2"),
+    K("MI_CHANNEL_OS_3", "Next Key\nChannel\n3", "Temporary switch to MIDI channel 3"),
+    K("MI_CHANNEL_OS_4", "Next Key\nChannel\n4", "Temporary switch to MIDI channel 4"),
+    K("MI_CHANNEL_OS_5", "Next Key\nChannel\n5", "Temporary switch to MIDI channel 5"),
+    K("MI_CHANNEL_OS_6", "Next Key\nChannel\n6", "Temporary switch to MIDI channel 6"),
+    K("MI_CHANNEL_OS_7", "Next Key\nChannel\n7", "Temporary switch to MIDI channel 7"),
+    K("MI_CHANNEL_OS_8", "Next Key\nChannel\n8", "Temporary switch to MIDI channel 8"),
+    K("MI_CHANNEL_OS_9", "Next Key\nChannel\n9", "Temporary switch to MIDI channel 9"),
+    K("MI_CHANNEL_OS_10", "Next Key\nChannel\n10", "Temporary switch to MIDI channel 10"),
+    K("MI_CHANNEL_OS_11", "Next Key\nChannel\n11", "Temporary switch to MIDI channel 11"),
+    K("MI_CHANNEL_OS_12", "Next Key\nChannel\n12", "Temporary switch to MIDI channel 12"),
+    K("MI_CHANNEL_OS_13", "Next Key\nChannel\n13", "Temporary switch to MIDI channel 13"),
+    K("MI_CHANNEL_OS_14", "Next Key\nChannel\n14", "Temporary switch to MIDI channel 14"),
+    K("MI_CHANNEL_OS_15", "Next Key\nChannel\n15", "Temporary switch to MIDI channel 15"),
+    K("MI_CHANNEL_OS_16", "Next Key\nChannel\n16", "Temporary switch to MIDI channel 16"),
 ]
 
 
@@ -1310,7 +1311,8 @@ KEYCODES_MIDI_CHORD_1 = [
 K("MI_CHORD_0", "Major", "Major Chord"),
 K("MI_CHORD_1", "Minor", "Minor Chord"),
 K("MI_CHORD_2", "Dim\nOr\n°", "Diminished Chord"),
-K("MI_CHORD_3", "Aug\nOr\n+", "Aug Chord"),
+K("MI_CHORD_128", "Aug\nOr\n+", "Aug Chord"),
+K("MI_CHORD_3", "b5", "b5 Chord"),
 K("MI_CHORD_4", "Sus2", "Sus2 Chord"),
 K("MI_CHORD_5", "Sus4", "Sus4 Chord"),
 K("MI_CHORD_32", "Maj7\nno5", "Maj7no5 Chord"),
@@ -1443,16 +1445,6 @@ KEYCODES_RGB_KC_CUSTOM = [
     K("RGB_KC_43", "MultiSplash", "RGB Mode: MultiSplash"),
     K("RGB_KC_44", "Solid\nSplash", "RGB Mode: Solid Splash"),
     K("RGB_KC_45", "Solid\nMultiSplash", "RGB Mode: Solid MultiSplash"),
-    K("RGB_M_P", "Plain", "RGB Plain"),
-    K("RGB_M_B", "Breathe", "RGB_MODE_BREATHE"),
-    K("RGB_M_R", "Rainbow", "RGB_MODE_RAINBOW"),
-    K("RGB_M_SW", "Swirl", "RGB_MODE_SWIRL"),
-    K("RGB_M_SN", "Snake", "RGB_MODE_SNAKE"),
-    K("RGB_M_K", "Knight", "RGB_MODE_KNIGHT"),
-    K("RGB_M_X", "Christmas", "RGB_MODE_XMAS"),
-    K("RGB_M_G", "Gradient", "RGB_MODE_GRADIENT"),
-    K("RGB_M_T", "Twinkle", "RGB_MODE_TWINKLE"),
-
 ]
 
 KEYCODES_RGB_KC_COLOR = [
