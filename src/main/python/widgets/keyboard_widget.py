@@ -459,14 +459,14 @@ class KeyboardWidget(QWidget):
                 # draw the inner legend
                 qp.setPen(key.mask_color if key.mask_color else regular_pen)
                 smaller_font = qp.font()
-                smaller_font.setPointSize(smaller_font.pointSize() + 2)
+                smaller_font.setPointSize(smaller_font.pointSize() + 0)
                 qp.setFont(smaller_font)
                 qp.drawText(key.mask_rect, Qt.AlignCenter, key.mask_text)
             else:
                 # draw the legend
                 qp.setPen(key.color if key.color else regular_pen)
                 smaller_font = qp.font()
-                smaller_font.setPointSize(smaller_font.pointSize() + 2)
+                smaller_font.setPointSize(smaller_font.pointSize() + 0)
                 qp.setFont(smaller_font)
                 qp.drawText(key.text_rect, Qt.AlignCenter, key.text)
 
