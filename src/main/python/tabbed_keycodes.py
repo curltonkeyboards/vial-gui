@@ -1507,7 +1507,7 @@ class midiTab(QScrollArea):
 
         row = 0
         col = 0
-        max_columns = 4  # Maximum number of columns before dropdown
+        max_columns = 4  # Default max columns for first two rows
 
         # Add inversion buttons
         for keycode in self.inversion_keycodes:
@@ -1521,9 +1521,15 @@ class midiTab(QScrollArea):
                 self.button_layout.addWidget(btn, row, col)
 
                 col += 1
-                if col >= max_columns:
+                # Check if we reached the end of the current row
+                if (row < 2 and col >= 4) or (row == 2 and col >= 3):
                     col = 0
                     row += 1
+
+                # Switch to 3 columns for the third row
+                if row == 2:
+                    max_columns = 3
+
 
     def on_selection_change(self, index):
         selected_qmk_id = self.sender().itemData(index)
