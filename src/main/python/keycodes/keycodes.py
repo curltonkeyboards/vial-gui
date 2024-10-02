@@ -1211,9 +1211,9 @@ KEYCODES_MIDI_UPDOWN = [
     K("MI_OCTD", "Octave\n▼", "Midi move down an octave"),
     K("MI_CHD", "Channel\n▼", "Midi decrease channel"),
     K("MI_VELOCITY_DOWN", "Velocity\n▼", "Midi decrease velocity"), 
-    K("SMARTCHORD_DOWN", "Quick\nChord\n▼", "QuickChord Down"),
-    K("MI_CHORD_99", "Quick\nChord", "Press QuickChord"),
-    K("SMARTCHORD_UP", "Quick\nChord\n▲", "QuickChord Up"),
+    K("SMARTCHORD_DOWN", "Smart\nChord\n▼", "QuickChord Down"),
+    K("MI_CHORD_99", "Smart\nChord", "Press QuickChord"),
+    K("SMARTCHORD_UP", "Smart\nChord\n▲", "QuickChord Up"),
     K("OLED_1", "Screen\nKeyboard\nShift", "Momentarily turn on layer when pressed"),
 ]    
 
@@ -1278,11 +1278,11 @@ KEYCODES_VELOCITY_STEPSIZE = [
 ]
 
 KEYCODES_MIDI_SMARTCHORDBUTTONS = [
-    K("SMARTCHORD_DOWN", "Quick\nChord\n▼", "QuickChord Down"),
-    K("MI_CHORD_99", "Quick\nChord", "Press QuickChord"),
-    K("SMARTCHORD_UP", "Quick\nChord\n▲", "QuickChord Up"),
+    K("SMARTCHORD_DOWN", "Smart\nChord\n▼", "QuickChord Down"),
+    K("MI_CHORD_99", "Smart\nChord", "Press QuickChord"),
+    K("SMARTCHORD_UP", "Smart\nChord\n▲", "QuickChord Up"),
     K("COLORBLIND_TOGGLE", "Colorblind\nOn/Off", "Colorblind"),
-    K("SMARTCHORDCOLOR_TOGGLE", "Smartchord\nRGB\nOn/Off", "Smartchord LEDs Toggle"),
+    K("SMARTCHORDCOLOR_TOGGLE", "Smart\nchord\nRGB On/Off", "Smartchord LEDs Toggle"),
     K("OLED_1", "Screen\nKeyboard\nShift", "Momentarily turn on layer when pressed"),
     
 ]
