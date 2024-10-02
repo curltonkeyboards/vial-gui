@@ -1169,6 +1169,14 @@ KEYCODES_MIDI_ADVANCED = [
     K("MI_MODSU", "Mod\nSpeed ▲", "Midi increase modulation speed"),
     K("MI_BENDD", "Pitch\nBend ▼", "Midi bend pitch down"),
     K("MI_BENDU", "Pitch\nBend ▲", "Midi bend pitch up"),
+    K("MI_TRNSU", "Transpose\n▲", "Midi increase transposition"), 
+    K("MI_TRNSD", "Transpose\n▼", "Midi decrease transposition"),    
+    K("MI_OCTU", "Octave\n▲", "Midi move up an octave"),   
+    K("MI_OCTD", "Octave\n▼", "Midi move down an octave"),
+    K("MI_VELOCITY_UP", "Velocity\n▲", "Midi increase velocity"),    
+    K("MI_VELOCITY_DOWN", "Velocity\n▼", "Midi decrease velocity"), 
+    K("MI_CHU", "Channel\n▲", "Midi increase channel"),    
+    K("MI_CHD", "Channel\n▼", "Midi decrease channel"),
 ]
 
 KEYCODES_MIDI_PEDAL = [
@@ -1525,10 +1533,10 @@ KEYCODES_MIDI_BANK.append(K("MI_BANK_DWN",
                             "Bank\nDown",
                             "Bank down"))
 KEYCODES_Program_Change_UPDOWN.append(K("MI_PROG_UP",
-                            "Program\nUp",
+                            "Program\n▲",
                             "Program up"))
 KEYCODES_Program_Change_UPDOWN.append(K("MI_PROG_DWN",
-                            "Program\nDown",
+                            "Program\n▼",
                             "Program down"))
 
 for x in range(128):

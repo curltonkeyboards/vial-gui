@@ -766,7 +766,7 @@ class midiadvancedTab(QScrollArea):
 
                 # Move to the next column; if the limit is reached, reset to column 0 and increment the row
                 col += 1
-                if col >= 10:  # Adjust the number of columns as needed
+                if col >= 12:  # Adjust the number of columns as needed
                     col = 0
                     row += 1
 
