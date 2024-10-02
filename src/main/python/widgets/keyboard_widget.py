@@ -258,7 +258,7 @@ class KeyboardWidget(QWidget):
         super().__init__()
 
         self.enabled = True
-        self.scale = 1
+        self.scale = 1.1
         self.padding = KEYBOARD_WIDGET_PADDING
 
         self.setMouseTracking(True)
@@ -350,7 +350,7 @@ class KeyboardWidget(QWidget):
         max_w = max_h = 0
         for key in self.widgets:
             p = key.polygon.boundingRect().bottomRight()
-            max_w = max(max_w, p.x() * (self.scale * 1.4))
+            max_w = max(max_w, p.x() * (self.scale * 1.3))
             max_h = max(max_h, p.y() * (self.scale * 1.3))
 
         self.width = round(max_w + 2 * self.padding)
