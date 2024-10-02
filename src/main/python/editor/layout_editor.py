@@ -94,7 +94,7 @@ class LayoutEditor(BasicEditor):
 
         self.widgets = []
 
-        self.addStretch()
+        #self.addStretch()
         self.keyboard_preview = KeyboardWidget(self)
         self.keyboard_preview.set_enabled(False)
         self.keyboard_preview.set_scale(0.7)
@@ -107,7 +107,7 @@ class LayoutEditor(BasicEditor):
         w.setLayout(self.container)
         self.addWidget(w)
         self.setAlignment(w, QtCore.Qt.AlignHCenter)
-        self.addStretch()
+        #self.addStretch()
 
     def update_preview(self):
         self.keyboard_preview.set_keys(self.keyboard.keys, self.keyboard.encoders)
