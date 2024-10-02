@@ -1155,6 +1155,7 @@ KEYCODES_MIDI_BASIC = [
     K("MI_ALLOFF", "All\nNotes\nOff", "Midi send all notes OFF"),
     K("MI_SUS", "Sustain\nPedal", "Midi Sustain"),
     K("KC_NO", "", "None"),
+    K("MI_CHORD_99", "Smart\nChord", "Press QuickChord"),  
 ]
 
 KEYCODES_MIDI_ADVANCED = [
@@ -1206,14 +1207,14 @@ KEYCODES_MIDI_UPDOWN = [
     K("MI_TRNSU", "Transpose\n▲", "Midi increase transposition"),    
     K("MI_OCTU", "Octave\n▲", "Midi move up an octave"),   
     K("MI_CHU", "Channel\n▲", "Midi increase channel"),    
-    K("MI_VELOCITY_UP", "Velocity\n▲", "Midi increase velocity"),    
+    K("MI_VELOCITY_UP", "Velocity\n▲", "Midi increase velocity"),  
+    K("SMARTCHORD_UP", "Smart\nChord\n▲", "QuickChord Up"),    
     K("MI_TRNSD", "Transpose\n▼", "Midi decrease transposition"),
     K("MI_OCTD", "Octave\n▼", "Midi move down an octave"),
     K("MI_CHD", "Channel\n▼", "Midi decrease channel"),
     K("MI_VELOCITY_DOWN", "Velocity\n▼", "Midi decrease velocity"), 
     K("SMARTCHORD_DOWN", "Smart\nChord\n▼", "QuickChord Down"),
-    K("MI_CHORD_99", "Smart\nChord", "Press QuickChord"),
-    K("SMARTCHORD_UP", "Smart\nChord\n▲", "QuickChord Up"),
+   
 ]    
 
 KEYCODES_MIDI_KEY = [
