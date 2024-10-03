@@ -201,7 +201,7 @@ class SmartChordTab(QScrollArea):
              "MI_C_4", "MI_D_4", "MI_E_4", "MI_F_4", "MI_G_4", "MI_A_4", "MI_B_4",
              "MI_C_5", "MI_D_5", "MI_E_5", "MI_F_5", "MI_G_5", "MI_A_5", "MI_B_5"],
             
-            ["KC_NO", "MI_ALLOFF", "MI_SUS", "KC_NO"]
+            ["KC_NO", "MI_ALLOFF", "MI_SUS", "MI_CHORD_99"]
         ]
         
         # 1. MIDI Layout
@@ -323,6 +323,7 @@ class SmartChordTab(QScrollArea):
             "MI_ALLOFF": "All\nNotes\nOff", 
             "MI_SUS" : "Sustain\nPedal",
             "KC_NO" : " "
+            "MI_CHORD_99": "SmartChord"
         }
 
         for row_index, row in enumerate(layout):
@@ -340,7 +341,7 @@ class SmartChordTab(QScrollArea):
                         button.setStyleSheet("background-color: rgba(30, 30, 30, 1); color: rgba(190, 190, 190, 1);")
                         # Add an empty space before the black keys to stagger
                         
-                    if "Pedal" in readable_name or "All" in readable_name or " " in readable_name:
+                    if "Pedal" in readable_name or "All" in readable_name or " " in readable_name or "Smart" in readable_name:
                         button.setStyleSheet("")
   
                     if readable_name in ["C#\nDb", "C#3\nDb3"]:
@@ -361,7 +362,7 @@ class SmartChordTab(QScrollArea):
                     
 
                     button.setFixedHeight(40)  # Set size as needed
-                    if "Pedal" in readable_name or "All" in readable_name:
+                    if "Pedal" in readable_name or "All" in readable_name or "Smart" in readable_name:
                         button.setFixedWidth(80)  # Set fixed width of 80 for 'Pedal' or 'All' in readable_name
                     else:
                         button.setFixedWidth(40)  # Set fixed width of 40 for other buttons
