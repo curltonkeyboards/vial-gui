@@ -1491,7 +1491,7 @@ KEYCODES_RGB_KC_COLOR = [
 
 KEYCODES_HIDDEN = []
 for x in range(256):
-    KEYCODES_HIDDEN.append(K("Tapdance\n({})".format(x), "Tapdance({})".format(x)))
+    KEYCODES_HIDDEN.append(K("TD({})".format(x), "TD({})".format(x)))
 
 KEYCODES = []
 KEYCODES_MAP = dict()
