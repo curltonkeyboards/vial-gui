@@ -322,7 +322,7 @@ class SmartChordTab(QScrollArea):
             "MI_B": "B",
             "MI_ALLOFF": "All\nNotes\nOff", 
             "MI_SUS" : "Sustain\nPedal",
-            "KC_NO" : " "
+            "KC_NO" : " ",
             "MI_CHORD_99": "SmartChord"
         }
 
@@ -933,7 +933,6 @@ class LayerTab(QScrollArea):
         for keycode in self.inversion_keycodes:
             if keycode_filter is None or keycode_filter(keycode.qmk_id):
                 btn = SquareButton()
-                btn.setFixedWidth(80)
                 btn.setFixedHeight(40)
                 btn.setText(Keycode.label(keycode.qmk_id))
                 btn.clicked.connect(lambda _, k=keycode.qmk_id: self.keycode_changed.emit(k))
