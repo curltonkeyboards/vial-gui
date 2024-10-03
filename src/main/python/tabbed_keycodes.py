@@ -1489,7 +1489,7 @@ class midiTab(QScrollArea):
                     
 
                     button.setFixedHeight(40)  # Set size as needed
-                    if "Pedal" in readable_name or "All" in readable_name:
+                    if "Pedal" in readable_name or "All" in readable_name or "Smart" in readable_name:
                         button.setFixedWidth(80)  # Set fixed width of 80 for 'Pedal' or 'All' in readable_name
                     else:
                         button.setFixedWidth(40)  # Set fixed width of 40 for other buttons
