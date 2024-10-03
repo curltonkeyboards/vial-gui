@@ -1168,8 +1168,8 @@ class MacroTab(QScrollArea):
 
         # Create a horizontal layout for the additional dropdowns
         self.additional_dropdown_layout2 = QHBoxLayout()
-        self.add_header_dropdown("RGB Mode", self.smartchord_LSB, self.additional_dropdown_layout2)
-        self.add_header_dropdown("RGB Color", self.smartchord_MSB, self.additional_dropdown_layout2)
+        self.add_header_dropdown("Macro Selection", self.smartchord_LSB, self.additional_dropdown_layout2)
+        self.add_header_dropdown("Tapdance Selection", self.smartchord_MSB, self.additional_dropdown_layout2)
         self.main_layout.addLayout(self.additional_dropdown_layout2)
 
         # Spacer to push everything to the top
