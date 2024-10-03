@@ -580,7 +580,6 @@ class midiadvancedTab(QScrollArea):
         # Create a button to represent the CC X -> CC Y dropdown
         self.cc_button = QPushButton("CC Value")
         self.cc_button.setFixedHeight(40)
-        self.cc_button.setFixedWidth(200)
         self.cc_button.clicked.connect(self.open_cc_xy_dialog)
 
         # Add the button to the layout
