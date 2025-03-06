@@ -4,7 +4,7 @@ from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QLabel, QCheckBox, QComboBox, QGridLayout, QWidget, QSizePolicy
 
 from editor.basic_editor import BasicEditor
-from widgets.keyboard_widget import KeyboardWidget
+from widgets.keyboard_widget import KeyboardWidget2
 from vial_device import VialKeyboard
 
 
@@ -95,7 +95,7 @@ class LayoutEditor(BasicEditor):
         self.widgets = []
 
         self.addStretch()
-        self.keyboard_preview = KeyboardWidget(self)
+        self.keyboard_preview = KeyboardWidget2(self)
         self.keyboard_preview.set_enabled(False)
         self.keyboard_preview.set_scale(0.7)
         self.addWidget(self.keyboard_preview)

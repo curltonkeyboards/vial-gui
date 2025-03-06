@@ -47,7 +47,7 @@ themes = [
     ("Arc", {
         QPalette.Window: "#333333",
         QPalette.WindowText: "#cc5200",
-        QPalette.Base: "#333333",
+        QPalette.Base: "#61574a",
         QPalette.AlternateBase: "#baaa93",
         QPalette.ToolTipBase: "#3e2308",
         QPalette.ToolTipText: "#cc5200",
