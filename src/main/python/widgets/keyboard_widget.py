@@ -907,8 +907,8 @@ class KeyboardWidget2(QWidget):
         max_w = max_h = 0
         for key in self.widgets:
             p = key.polygon.boundingRect().bottomRight()
-            max_w = max(max_w, p.x() * (self.scale * 1.4))
-            max_h = max(max_h, p.y() * (self.scale * 1.5))
+            max_w = max(max_w, p.x() * (self.scale * 1.23))
+            max_h = max(max_h, p.y() * (self.scale * 1.35))
 
         # Move all widgets right 20 pixels and down 20 pixels
         for widget in self.widgets:
@@ -1025,7 +1025,7 @@ class KeyboardWidget2(QWidget):
         for idx, key in enumerate(self.widgets):
             qp.save()
 
-            qp.scale(self.scale * 1.3, self.scale * 1.3)
+            qp.scale(self.scale * 1.2, self.scale * 1.2)
             qp.translate(key.shift_x, key.shift_y)
             qp.translate(key.rotation_x, key.rotation_y)
             qp.rotate(key.rotation_angle)
@@ -1095,7 +1095,7 @@ class KeyboardWidget2(QWidget):
         """ Returns key, hit_masked_part """
 
         # Adjust the position for hit testing based on shifts
-        adjusted_pos = pos / (self.scale * 1.3)
+        adjusted_pos = pos / (self.scale * 1.2)  # Changed from 1.2 to 1.2
 
         for key in self.widgets:
             # Check the masked hitbox first
