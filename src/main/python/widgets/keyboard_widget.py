@@ -954,7 +954,7 @@ class KeyboardWidget2(QWidget):
         if not pixmap.isNull():
             # Define the area for the image with specific coordinates and dimensions
             image_x, image_y = 0, 0  # Adjust as needed for positioning
-            image_width, image_height = 1139, 380  # Set the dimensions as desired
+            image_width, image_height = 932, 311  # Set the dimensions as desired
             image_rect = QRect(image_x, image_y, image_width, image_height)  # Use QRect instead of QRectF
 
             # Create a rounded path for clipping
