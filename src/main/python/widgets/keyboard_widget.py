@@ -570,7 +570,7 @@ class KeyWidget2:
         if self.scale != scale or self.shift_x != shift_x or self.shift_y != shift_y:
             self.scale = scale
             # Reduce the size factor by approximately 12%
-            self.size = self.scale * (KEY_SIZE_RATIO + KEY_SPACING_RATIO) * 0.88
+            self.size = self.scale * (KEY_SIZE_RATIO + KEY_SPACING_RATIO) * 0.85
             spacing = self.scale * KEY_SPACING_RATIO
             # Rest of the method remains unchanged
 
