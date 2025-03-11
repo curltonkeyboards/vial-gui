@@ -569,8 +569,10 @@ class KeyWidget2:
     def update_position(self, scale, shift_x=0, shift_y=0):
         if self.scale != scale or self.shift_x != shift_x or self.shift_y != shift_y:
             self.scale = scale
-            self.size = self.scale * (KEY_SIZE_RATIO + KEY_SPACING_RATIO)
+            # Reduce the size factor by approximately 12%
+            self.size = self.scale * (KEY_SIZE_RATIO + KEY_SPACING_RATIO) * 0.88
             spacing = self.scale * KEY_SPACING_RATIO
+            # Rest of the method remains unchanged
 
             self.rotation_x = self.size * self.desc.rotation_x
             self.rotation_y = self.size * self.desc.rotation_y
