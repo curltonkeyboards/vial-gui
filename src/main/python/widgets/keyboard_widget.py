@@ -1022,7 +1022,7 @@ class KeyboardWidget2(QWidget):
 
         mask_font = qp.font()
         #doesnt seem to change font size
-        mask_font.setPointSize(round(mask_font.pointSize() * 1.8))
+        mask_font.setPointSize(round(mask_font.pointSize() * 1.4))
 
         for idx, key in enumerate(self.widgets):
             qp.save()
