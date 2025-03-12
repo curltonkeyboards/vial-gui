@@ -1057,7 +1057,7 @@ class KeyboardWidget2(QWidget):
 
             # draw key text
             if key.masked:
-                # draw the outer legend doesnt seem to change font size
+                # draw the outer legend - set the scaled down font
                 qp.setFont(mask_font)
                 qp.setPen(key.color if key.color else regular_pen)
                 qp.drawText(key.nonmask_rect, Qt.AlignCenter, key.text)
@@ -1069,15 +1069,15 @@ class KeyboardWidget2(QWidget):
 
                 # draw the inner legend
                 qp.setPen(key.mask_color if key.mask_color else regular_pen)
-                smaller_font = qp.font()
-                smaller_font.setPointSize(smaller_font.pointSize() - 1)
+                smaller_font = mask_font  # Use the already scaled mask_font
+                smaller_font.setPointSize(smaller_font.pointSize() - 1)  # Still make inner text smaller
                 qp.setFont(smaller_font)
                 qp.drawText(key.mask_rect, Qt.AlignCenter, key.mask_text)
             else:
                 # draw the legend
                 qp.setPen(key.color if key.color else regular_pen)
-                smaller_font = qp.font()
-                smaller_font.setPointSize(smaller_font.pointSize() - 1)
+                qp.setFont(mask_font)  # Use the scaled font directly
+                qp.drawText(key.text_rect, Qt.AlignCenter, key.text)
                 qp.setFont(smaller_font)
                 qp.drawText(key.text_rect, Qt.AlignCenter, key.text)
 
