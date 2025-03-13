@@ -1026,15 +1026,15 @@ class KeyboardWidget2(QWidget):
 
         for idx, key in enumerate(self.widgets):
             qp.save()
-
+            
             qp.scale(self.scale * 1.3, self.scale * 1.3)
             qp.translate(key.shift_x, key.shift_y)
             qp.translate(key.rotation_x, key.rotation_y)
             qp.rotate(key.rotation_angle)
             qp.translate(-key.rotation_x, -key.rotation_y)
-
+            
             active = key.active or (self.active_key == key and not self.active_mask)
-
+            
             # draw keycap background/drop-shadow
             qp.setPen(active_pen if active else Qt.NoPen)
             brush = background_brush
@@ -1044,7 +1044,7 @@ class KeyboardWidget2(QWidget):
                 brush = background_on_brush
             qp.setBrush(brush)
             qp.drawPath(key.background_draw_path)
-
+            
             # draw keycap foreground
             qp.setPen(Qt.NoPen)
             brush = foreground_brush
@@ -1054,39 +1054,43 @@ class KeyboardWidget2(QWidget):
                 brush = foreground_on_brush
             qp.setBrush(brush)
             qp.drawPath(key.foreground_draw_path)
-
+            
+            # Create properly scaled fonts
+            base_font = qp.font()
+            # Create a smaller font for regular text (88% of original)
+            small_font = QFont(base_font.family())
+            small_font.setPointSizeF(base_font.pointSizeF() * 0.88)
+            # Create an even smaller font for masked inner text
+            extra_small_font = QFont(base_font.family())
+            extra_small_font.setPointSizeF(base_font.pointSizeF() * 0.78)
+            
             # draw key text
             if key.masked:
-                # draw the outer legend
-                qp.setFont(mask_font)
+                # draw the outer legend with small font
+                qp.setFont(small_font)
                 qp.setPen(key.color if key.color else regular_pen)
                 qp.drawText(key.nonmask_rect, Qt.AlignCenter, key.text)
-
+                
                 # draw the inner highlight rect
                 qp.setPen(active_pen if self.active_key == key and self.active_mask else Qt.NoPen)
                 qp.setBrush(mask_brush)
                 qp.drawRoundedRect(key.mask_rect, key.corner, key.corner)
-
-                # draw the inner legend
+                
+                # draw the inner legend with extra small font
                 qp.setPen(key.mask_color if key.mask_color else regular_pen)
-                smaller_font = qp.font()
-                smaller_font.setPointSize(smaller_font.pointSize() - 1)
-                qp.setFont(smaller_font)
+                qp.setFont(extra_small_font)
                 qp.drawText(key.mask_rect, Qt.AlignCenter, key.mask_text)
             else:
-                # draw the legend
+                # draw the legend with small font
                 qp.setPen(key.color if key.color else regular_pen)
-                # Create a new font for the non-masked case
-                regular_font = qp.font()
-                regular_font.setPointSize(round(regular_font.pointSize() * 0.88))
-                qp.setFont(regular_font)
+                qp.setFont(small_font)
                 qp.drawText(key.text_rect, Qt.AlignCenter, key.text)
-
+            
             # draw the extra shape (encoder arrow)
             qp.setPen(extra_pen)
             qp.setBrush(extra_brush)
             qp.drawPath(key.extra_draw_path)
-
+            
             qp.restore()
 
         qp.end()
