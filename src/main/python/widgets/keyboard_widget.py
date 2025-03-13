@@ -1055,19 +1055,15 @@ class KeyboardWidget2(QWidget):
             qp.setBrush(brush)
             qp.drawPath(key.foreground_draw_path)
             
-            # Create properly scaled fonts
+            # Create properly scaled fonts - use existing font instead of creating new ones
             base_font = qp.font()
-            # Create a smaller font for regular text (88% of original)
-            small_font = QFont(base_font.family())
-            small_font.setPointSizeF(base_font.pointSizeF() * 0.88)
-            # Create an even smaller font for masked inner text
-            extra_small_font = QFont(base_font.family())
-            extra_small_font.setPointSizeF(base_font.pointSizeF() * 0.78)
+            # Adjust the point size directly
+            base_font.setPointSizeF(base_font.pointSizeF() * 0.88)
             
             # draw key text
             if key.masked:
-                # draw the outer legend with small font
-                qp.setFont(small_font)
+                # draw the outer legend with adjusted font
+                qp.setFont(base_font)
                 qp.setPen(key.color if key.color else regular_pen)
                 qp.drawText(key.nonmask_rect, Qt.AlignCenter, key.text)
                 
@@ -1076,14 +1072,16 @@ class KeyboardWidget2(QWidget):
                 qp.setBrush(mask_brush)
                 qp.drawRoundedRect(key.mask_rect, key.corner, key.corner)
                 
-                # draw the inner legend with extra small font
+                # draw the inner legend with even smaller font
                 qp.setPen(key.mask_color if key.mask_color else regular_pen)
-                qp.setFont(extra_small_font)
+                inner_font = base_font
+                inner_font.setPointSizeF(inner_font.pointSizeF() * 0.9)  # Further reduce
+                qp.setFont(inner_font)
                 qp.drawText(key.mask_rect, Qt.AlignCenter, key.mask_text)
             else:
-                # draw the legend with small font
+                # draw the legend with adjusted font
                 qp.setPen(key.color if key.color else regular_pen)
-                qp.setFont(small_font)
+                qp.setFont(base_font)
                 qp.drawText(key.text_rect, Qt.AlignCenter, key.text)
             
             # draw the extra shape (encoder arrow)
