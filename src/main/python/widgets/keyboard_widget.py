@@ -1022,7 +1022,7 @@ class KeyboardWidget2(QWidget):
 
         # Create scaled font for keys
         mask_font = qp.font()
-        mask_font.setPointSize(round(mask_font.pointSize() * 0.88))
+        mask_font.setPointSize(round(mask_font.pointSize() * 0.38))
 
         for idx, key in enumerate(self.widgets):
             qp.save()
