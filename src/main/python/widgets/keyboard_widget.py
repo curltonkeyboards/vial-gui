@@ -1022,12 +1022,12 @@ class KeyboardWidget2(QWidget):
 
         # Create scaled font for keys
         mask_font = qp.font()
-        mask_font.setPointSize(round(mask_font.pointSize() * 0.88))
+        mask_font.setPointSize(round(mask_font.pointSize() * 0.70))
 
         for idx, key in enumerate(self.widgets):
             qp.save()
 
-            qp.scale(self.scale * 3.3, self.scale * 3.3)
+            qp.scale(self.scale * 1.3, self.scale * 1.3)
             qp.translate(key.shift_x, key.shift_y)
             qp.translate(key.rotation_x, key.rotation_y)
             qp.rotate(key.rotation_angle)
