@@ -937,7 +937,7 @@ class KeyboardWidget2(QWidget):
         def with_transparency(color, transparency_factor):
             alpha = int(255 * (1 - transparency_factor))
             return QColor(color.red(), color.green(), color.blue(), alpha)
-    
+
         # Draw the rounded border around the keyboard
         border_radius = 15  # Radius for rounded corners
         rect = QRect(self.padding, self.padding, self.width - 2 * self.padding, self.height - 2 * self.padding)
@@ -977,19 +977,19 @@ class KeyboardWidget2(QWidget):
 
         background_brush = QBrush()
         background_color = QApplication.palette().color(QPalette.Button)
-        background_brush.setColor(with_transparency(background_color, 0.99))  # 70% transparent
+        background_brush.setColor(with_transparency(background_color, 0.99))  # 99% transparent
         background_brush.setStyle(Qt.SolidPattern)
 
         # Foreground brush
         foreground_brush = QBrush()
         foreground_color = QApplication.palette().color(QPalette.Button)
-        foreground_brush.setColor(with_transparency(foreground_color, 0.99))  # 70% transparent
+        foreground_brush.setColor(with_transparency(foreground_color, 0.99))  # 99% transparent
         foreground_brush.setStyle(Qt.SolidPattern)
 
         # Mask brush
         mask_brush = QBrush()
         mask_color = QApplication.palette().color(QPalette.Button).lighter(Theme.mask_light_factor())
-        mask_brush.setColor(with_transparency(mask_color, 0.01))  # 70% transparent
+        mask_brush.setColor(with_transparency(mask_color, 0.01))  # 1% transparent
         mask_brush.setStyle(Qt.SolidPattern)
 
         # for currently selected keycap
@@ -1020,21 +1020,21 @@ class KeyboardWidget2(QWidget):
         foreground_on_brush.setColor(QApplication.palette().color(QPalette.Highlight).darker(120))
         foreground_on_brush.setStyle(Qt.SolidPattern)
 
+        # Create scaled font for keys
         mask_font = qp.font()
-        #doesnt seem to change font size
-        mask_font.setPointSize(round(mask_font.pointSize() * 0.8))
+        mask_font.setPointSize(round(mask_font.pointSize() * 0.88))
 
         for idx, key in enumerate(self.widgets):
             qp.save()
-            
+
             qp.scale(self.scale * 1.3, self.scale * 1.3)
             qp.translate(key.shift_x, key.shift_y)
             qp.translate(key.rotation_x, key.rotation_y)
             qp.rotate(key.rotation_angle)
             qp.translate(-key.rotation_x, -key.rotation_y)
-            
+
             active = key.active or (self.active_key == key and not self.active_mask)
-            
+
             # draw keycap background/drop-shadow
             qp.setPen(active_pen if active else Qt.NoPen)
             brush = background_brush
@@ -1044,7 +1044,7 @@ class KeyboardWidget2(QWidget):
                 brush = background_on_brush
             qp.setBrush(brush)
             qp.drawPath(key.background_draw_path)
-            
+
             # draw keycap foreground
             qp.setPen(Qt.NoPen)
             brush = foreground_brush
@@ -1054,41 +1054,36 @@ class KeyboardWidget2(QWidget):
                 brush = foreground_on_brush
             qp.setBrush(brush)
             qp.drawPath(key.foreground_draw_path)
-            
-            # Create properly scaled fonts - use existing font instead of creating new ones
-            base_font = qp.font()
-            # Adjust the point size directly
-            base_font.setPointSizeF(base_font.pointSizeF() * 0.88)
-            
+
             # draw key text
             if key.masked:
-                # draw the outer legend with adjusted font
-                qp.setFont(base_font)
+                # draw the outer legend with scaled font
+                qp.setFont(mask_font)
                 qp.setPen(key.color if key.color else regular_pen)
                 qp.drawText(key.nonmask_rect, Qt.AlignCenter, key.text)
-                
+
                 # draw the inner highlight rect
                 qp.setPen(active_pen if self.active_key == key and self.active_mask else Qt.NoPen)
                 qp.setBrush(mask_brush)
                 qp.drawRoundedRect(key.mask_rect, key.corner, key.corner)
-                
-                # draw the inner legend with even smaller font
-                qp.setPen(key.mask_color if key.mask_color else regular_pen)
-                inner_font = base_font
-                inner_font.setPointSizeF(inner_font.pointSizeF() * 0.9)  # Further reduce
+
+                # draw the inner legend - create a new font for inner text
+                inner_font = mask_font
+                inner_font.setPointSize(inner_font.pointSize() - 1)
                 qp.setFont(inner_font)
+                qp.setPen(key.mask_color if key.mask_color else regular_pen)
                 qp.drawText(key.mask_rect, Qt.AlignCenter, key.mask_text)
             else:
-                # draw the legend with adjusted font
+                # draw the legend with scaled font
                 qp.setPen(key.color if key.color else regular_pen)
-                qp.setFont(base_font)
+                qp.setFont(mask_font)
                 qp.drawText(key.text_rect, Qt.AlignCenter, key.text)
-            
+
             # draw the extra shape (encoder arrow)
             qp.setPen(extra_pen)
             qp.setBrush(extra_brush)
             qp.drawPath(key.extra_draw_path)
-            
+
             qp.restore()
 
         qp.end()
